@@ -9,6 +9,9 @@ class photographer{
         this._price = data.price
         this._portrait = data.portrait
     }
+    get name(){
+        return this._name
+    }
 }
 // CREATION DES BALISES HTML NECESSAIRES POUR PAGE ACCUEIL
 
