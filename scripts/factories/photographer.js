@@ -1,36 +1,3 @@
-//CREATION DU PATTERN D'UN PHOTOGRAPHE
-class photographer{
-    constructor(data){
-        this._name = data.name
-        this._id = data.id
-        this._city = data.city
-        this._country = data.country
-        this._tagline = data.tagline
-        this._price = data.price
-        this._portrait = data.portrait
-    }
-    get name(){
-        return this._name
-    }
-    get id(){
-        return this._id
-    }
-    get city(){
-        return this._city
-    }
-    get country(){
-        return this._country
-    }
-    get tagline(){
-        return this._tagline
-    }
-    get price(){
-        return this._price
-    }
-    get portrait(){
-        return this._portrait
-    }
-}
 // CREATION DES BALISES HTML NECESSAIRES POUR PAGE ACCUEIL
 
 
@@ -50,7 +17,7 @@ function photographerFactory(data) {
         h2.textContent = name;
 
         const h3 = document.createElement("h3");
-        h3.textContent = city +" "+country;
+        h3.textContent = city +" "+ country;
 
         const h4 = document.createElement("h4");
         h4.textContent = tagline;
