@@ -12,6 +12,24 @@ class photographer{
     get name(){
         return this._name
     }
+    get id(){
+        return this._id
+    }
+    get city(){
+        return this._city
+    }
+    get country(){
+        return this._country
+    }
+    get tagline(){
+        return this._tagline
+    }
+    get price(){
+        return this._price
+    }
+    get portrait(){
+        return this._portrait
+    }
 }
 // CREATION DES BALISES HTML NECESSAIRES POUR PAGE ACCUEIL
 
