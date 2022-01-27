@@ -3,14 +3,14 @@
 
 function photographerFactory(data) {
     const { portrait, name, city, country, tagline, price } = data;
-
-    const picture = `data/photographers/${portrait}`;
+    const picture = ("assets/photographers");
     console.log (picture)
-
     function getUserCardDOM() {
         const article = document.createElement( 'article' );
+
         const img = document.createElement( 'img' );
         img.setAttribute("src",picture)
+        console.log (img)
 
         const h2 = document.createElement( 'h2' );
         h2.textContent = name;
