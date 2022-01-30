@@ -1,35 +1,34 @@
 //Mettre le code JavaScript lié à la page photographer.html
+async function getPhotographer () {                                  //récupération du JSON
+    const response = await fetch ("data/photographers.json")
+    const photographers = await response.json()
+    return photographers
+    }
+const photographerId = new URLSearchParams(window.location.search).get("id");
+console.log(photographerId);
 
-function pagePhotographe(data) {
-    const { portrait, name, city, country, tagline } = data;
-    const picture = `assets/photographers/${portrait}`;
-    const img = document.createElement( 'img' );
+async function display(photographerId){
+    const photographer = await getPhotographer(photographerId);
+
+    const infosPhotographe = document.querySelector(".infos_photographe");
+
     const h2 = document.createElement( 'h2' );
     const h3 = document.createElement("h3");
     const h4 = document.createElement("h4");
+    const img = document.createElement( 'img' );
+    const picture = `/assets/photographers/${photographer.portrait}`;
 
-        img.setAttribute("src",picture)
-        h2.textContent = name;
-        h3.textContent = city +" "+ country;
-        h4.textContent = tagline;
+        img.setAttribute("src", picture);
+        h2.textContent = photographer.name;
+        h3.textContent = photographer.city,photographer.country;
+        h4.textContent = photographer.tagline;
 
-        article.appendChild(img);
-        article.appendChild(h2);
-        article.appendChild(h3);
-        article.appendChild(h4);
-        return (pagePhotographe);
+            infosPhotographe.appendChild(img);
+            infosPhotographe.appendChild(h2);
+            infosPhotographe.appendChild(h3);
+            infosPhotographe.appendChild(h4);
+
 }
-
-async function displayPhotographe(photographers) {
-    const infosPhotographe = document.querySelector(".infos_photographe");
-
-    photographers.forEach((photographer) => {
-        const pagePhotographe = pagePhotographe();
-        infosPhotographe.appendChild(pagePhotographe);
-    });
-};
-
-
-
-
+display()
+console.log(window.location.search);
 

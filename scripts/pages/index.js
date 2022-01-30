@@ -9,10 +9,10 @@ async function getPhotographers () {                                  //récupé
     function photographerFactory(data){                                 //1ère fonction qui permet d'englober le return vers la fonction getUserCardDom
         
         function getUserCardDOM() {                                     //2ème fonction qui crée les constantes et les éléments
-        const {portrait, name, city, country, tagline, price} = data;
+        const {portrait, name, city, country, tagline, price,id} = data;
         const picture = `assets/photographers/${portrait}`;
     
-
+        
         const article = document.createElement( "article" );
         const img = document.createElement( "img" );
         const h2 = document.createElement( "h2" );
@@ -22,12 +22,12 @@ async function getPhotographers () {                                  //récupé
 
       // CREATION DU LIEN ENTRE INDEX.HTML ET PHOTOGRAPHER.HTML
         article.addEventListener("click", ()=>{
-        window.location.href=`photographer.html?`;      //${id}   SERA A METTRE EN LIAISON AVEC L'ID DE CHAQUE PHOTOGRAPHE     
-                                                        //A REVOIR CAR LE LIEN DOIT ETRE SUR LA PHOTO ET LE NOM UNIQUEMENT 
+        window.location.href=`photographer.html?${id}`;         
+    //A REVOIR CAR LE LIEN DOIT ETRE SUR LA PHOTO ET LE NOM UNIQUEMENT 
         })                                                
 
         
-        img.setAttribute("src",picture)
+        img.setAttribute("src",picture);
         h2.textContent = name;
         h3.textContent = city +" "+ country;
         h4.textContent = tagline;
@@ -50,12 +50,11 @@ async function getPhotographers () {                                  //récupé
             const photographerModel = photographerFactory (photographer);//création de la constante qui récupère la 1ère fonction
             const userCardDOM = photographerModel.getUserCardDOM();         // création de la constante qui récupère la 1ère et la 2ème fonction
             photographersSection.appendChild(userCardDOM);                  //Mise en place des 2 fonctions en tant qu'enfant
-            console.log (userCardDOM)
         });
     };
 
-    async function init(){                                              //Fonction mettre en display le résultat de toutes les fonctions
+    async function display(){                                              //Fonction mettre en display le résultat de toutes les fonctions
         const {photographers} = await getPhotographers();               //const photographers récupère le tableau du JSON
         displayData(photographers);
     }
-  init ()                                                               //Active la fonction init
+  display ()                                                               //Active la fonction init
