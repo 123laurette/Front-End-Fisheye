@@ -3,10 +3,39 @@
 }
 
 .photograph-header {
+    border: solid ;
+    display: flex;
+    justify-content: space-between;
     background-color: #FAFAFA;
     height: 300px;
     margin: 0 100px;
 }
+.infos_photographe {
+    border: red solid;
+    width: 200px;
+    height: 200px;
+}
+
+.infos_photographe h2 {
+    border: green solid;
+    height: 20px;
+}
+.infos_photographe h3 {
+    border: violet solid;
+    height: 20px;
+}
+.infos_photographe h4 {
+    border: yellow solid;
+    height: 20px;
+}
+.photo{
+    border: blue solid;
+    height: 50px;
+    width: 20%;
+}
+
+
+
 
 .contact_button {
     font-size: 20px;

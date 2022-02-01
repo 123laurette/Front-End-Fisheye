@@ -25,7 +25,6 @@ async function getPhotographers () {                                  //récupé
         window.location.href=`photographer.html?${id}`;         
     //A REVOIR CAR LE LIEN DOIT ETRE SUR LA PHOTO ET LE NOM UNIQUEMENT 
         })                                                
-
         
         img.setAttribute("src",picture);
         h2.textContent = name;
@@ -44,12 +43,14 @@ async function getPhotographers () {                                  //récupé
     }
 
     async function displayData(photographers) {                     // fonction qui cible l'endroit et fait apparaitre les nouveaux éléments
-        const photographersSection = document.querySelector(".photographer_section");   //cible l'endroit du DO
+        const photographersSection = document.querySelector(".photographer_section"); 
+        i = 0;  //cible l'endroit du DO
 
         photographers.forEach((photographer) => {                   //récupérer la réponse du JSON const photographer pour chaque photographe
-            const photographerModel = photographerFactory (photographer);//création de la constante qui récupère la 1ère fonction
+            const photographerModel = photographerFactory (photographer,);//création de la constante qui récupère la 1ère fonction
             const userCardDOM = photographerModel.getUserCardDOM();         // création de la constante qui récupère la 1ère et la 2ème fonction
-            photographersSection.appendChild(userCardDOM);                  //Mise en place des 2 fonctions en tant qu'enfant
+            photographersSection.appendChild(userCardDOM);
+            i++;                 //Mise en place des 2 fonctions en tant qu'enfant
         });
     };
 
