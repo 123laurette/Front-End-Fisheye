@@ -1,90 +1,62 @@
 //Mettre le code JavaScript lié à la page photographer.html
-async function getPhotographer (index) {                                  //récupération du JSON
-    let response = await fetch ("data/photographers.json")
-    let photographers = await response.json()
-    console.log(photographers);
-    let photographer = photographers.photographers[index]
-    console.log(photographer);
-    return photographer
-    }
 
-
-// CREATION DES CONSTANTES ET DES ELEMENTS AJOUTES DANS HTML ET QUI RECUPERENT LES INFOS JSON
-
-    function newphotographerFactory(photographer){                                 //1ère fonction qui permet d'englober le return vers la fonction getUserCardDom
-        
-        function newgetUserCardDOM() {                                     //2ème fonction qui crée les constantes et les éléments
-        const {name, city, country, tagline,id} = data;
-    
-        const h2 = document.createElement( "h2" );
-        const h3 = document.createElement("h3");
-        const h4 = document.createElement("h4");
-
-        h2.textContent = photographer.name;
-        h3.textContent = photographer.city +" "+ photographer.country;
-        h4.textContent = photographer.tagline;
-        
-        infosPhotographe.appendChild(h2);
-        infosPhotographe.appendChild(h3);
-        infosPhotographe.appendChild(h4);
-        return (infosPhotographe);
-    }
-    return{newgetUserCardDOM}
-    }
-
-    async function newdisplayData(photographer) {                     // fonction qui cible l'endroit et fait apparaitre les nouveaux éléments
-        const infosPhotographe = document.querySelector(".infos_photographe"); 
-          //cible l'endroit du DO
-
-        photographers.forEach((photographer) => {                   //récupérer la réponse du JSON const photographer pour chaque photographe
-            const newphotographerModel = newphotographerFactory (photographer,);//création de la constante qui récupère la 1ère fonction
-            const newuserCardDOM = newphotographerModel.newgetUserCardDOM();         // création de la constante qui récupère la 1ère et la 2ème fonction
-            infosPhotographe.appendChild(newuserCardDOM);
-                            //Mise en place des 2 fonctions en tant qu'enfant
-        });
-    };
-
-    async function newdisplay(){                                              //Fonction mettre en display le résultat de toutes les fonctions
-        const {photographer} = await getPhotographer();               //const photographers récupère le tableau du JSON
-        newdisplayData(photographer);
-    }
-  newdisplay ()    
   
-  //Active la fonction init
-/*class photographer{
-    constructor(data,index){
-        this.name = data.name
-        this.id = data.id
-        this.city = data.city
-        this.country = data.country
-        this.tagline = data.tagline
-        this.price = data.price
-        this.portrait = data.portrait
-        this.index = index
+  class photographePattern{
+    constructor(data){
+        this._name = data.name
+        this._id = data.id
+        this._city = data.city
+        this._country = data.country
+        this._tagline = data.tagline
+        this._portrait = data.portrait
+    }
+    get name(){
+        return this._name
+    }
+    get id(){
+        return this._id
+    }
+    get city(){
+        return this._city
+    }
+    get country(){
+        return this._country
+    }
+    get tagline(){
+        return this._tagline
+    }
+    get portrait(){
+        return `/assets/photographers/${this._portrait}`
     }
 }
 async function getPhotographer (data) {                                  //récupération du JSON
     const response = await fetch ("data/photographers.json")
     const photographers = await response.json()
-    const photographer = photographers.photographers[this.id]
+    const photographer = photographers.photographePattern;
+
+    console.log(photographer);
+
     return photographers
-    }
-const photographerId = new URLSearchParams(window.location.search).get("photographer");
+}
+
+
+const photographerId = new URLSearchParams(window.location.search).get("${this._id}");
 console.log(photographerId);
+
 
 async function display(photographerId){
     const photographer = await getPhotographer(photographerId);
 
     const infosPhotographe = document.querySelector(".infos_photographe");
 
-    const h2 = document.createElement( 'h2' );
+    const h2 = document.createElement("h2");
     const h3 = document.createElement("h3");
     const h4 = document.createElement("h4");
     
 
-        h2.textContent = photographer.name;
-        h3.textContent = photographer.city,photographer.country;
-        h4.textContent = photographer.tagline;
+        h2.textContent = this._name;
+        h3.textContent = this._city,this._country;
+        h4.textContent = this._tagline;
 
             infosPhotographe.appendChild(h2);
             infosPhotographe.appendChild(h3);
@@ -92,10 +64,83 @@ async function display(photographerId){
 
 }
 display()
-console.log(window.location.search);
 
-const img = document.createElement( 'img' );
-    const picture = `/assets/photographers/${photographer.portrait}`;
-    img.setAttribute("src", picture);
-                infosPhotographe.appendChild(img);
-*/
+
+/*async function getPhotographer (index) {                                  //récupération du JSON
+    let response = await fetch ("data/photographers.json")
+    let photographers =  await response.json()
+    console.log(photographers);
+    return photographers
+    }
+
+class photographePattern{
+    constructor(data){
+        this._name = data.name
+        this._id = data.id
+        this._city = data.city
+        this._country = data.country
+        this._tagline = data.tagline
+        this._portrait = data.portrait
+    }
+    get name(){
+        return this._name
+    }
+    get id(){
+        return this._id
+    }
+    get city(){
+        return this._city
+    }
+    get country(){
+        return this._country
+    }
+    get tagline(){
+        return this._tagline
+    }
+    get portrait(){
+        return `/assets/photographers/${this._portrait}`
+    }
+}
+
+// CREATION DES CONSTANTES ET DES ELEMENTS AJOUTES DANS HTML ET QUI RECUPERENT LES INFOS JSON
+
+    async function newphotographerFactory(photographePattern){                                 //1ère fonction qui permet d'englober le return vers la fonction getUserCardDom
+        
+        async function newgetUserCardDOM(data) {                                     //2ème fonction qui crée les constantes et les éléments
+            const {name, city, country, tagline,id} = data;
+            const photographerId = new URLSearchParams(window.location.search).get("${this._id}");
+            //await this.fetchData(id)
+            console.log(photographerId);
+        
+            const h2 = document.createElement( "h2" );
+            const h3 = document.createElement("h3");
+            const h4 = document.createElement("h4");
+
+            h2.textContent = this._name;
+            h3.textContent = this._city +" "+ this._country;
+            h4.textContent = this._tagline;
+        
+            infosPhotographe.appendChild(h2);
+            infosPhotographe.appendChild(h3);
+            infosPhotographe.appendChild(h4);
+            return (infosPhotographe);
+        }
+    return{newgetUserCardDOM}
+    }
+
+    async function newdisplayData(photographePattern) {                     // fonction qui cible l'endroit et fait apparaitre les nouveaux éléments
+        const infosPhotographe = document.querySelector(".infos_photographe"); 
+          //cible l'endroit du DO
+
+        photographePattern.forEach(data)                   //récupérer la réponse du JSON const photographer pour chaque photographe
+            const newphotographerModel = newphotographerFactory (photographePattern);//création de la constante qui récupère la 1ère fonction
+            const newuserCardDOM = newphotographerModel.newgetUserCardDOM();         // création de la constante qui récupère la 1ère et la 2ème fonction
+            infosPhotographe.appendChild(newuserCardDOM);
+            i++;
+    };
+
+    async function newdisplay(){                                              //Fonction mettre en display le résultat de toutes les fonctions
+        const {photographePattern} = await getPhotographer();               //const photographers récupère le tableau du JSON
+        newdisplayData(photographePattern);
+    }
+  newdisplay () */   
