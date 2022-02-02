@@ -7,38 +7,21 @@ async function newgetPhotographers (index) {                                  //
 
 }
     class photographePattern{
-        constructor(index){
+        constructor(data,index){
             this._name = data.name
             this._id = data.id
             this._city = data.city
             this._country = data.country
             this._tagline = data.tagline
             this._portrait = data.portrait
-        }
-        get name(){
-            return this._name
-        }
-        get id(){
-            return this._id
-        }
-        get city(){
-            return this._city
-        }
-        get country(){
-            return this._country
-        }
-        get tagline(){
-            return this._tagline
-        }
-        get portrait(){
-            return `/assets/photographers/${this._portrait}`
+            this._index = index
         }
     }
 // CREATION DES CONSTANTES ET DES ELEMENTS AJOUTES DANS HTML ET QUI RECUPERENT LES INFOS JSON
 const infosPhotographe = document.querySelector(".infos_photographe"); 
 const photoPhotographe = document.querySelector(".photo");
 
-    function newphotographerFactory(data){                                 
+    function newphotographerFactory(data){
         function newgetUserCardDOM() {                                     
             const {portrait, name, city, country, tagline} = data;
 

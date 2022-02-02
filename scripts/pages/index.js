@@ -23,7 +23,7 @@ async function getPhotographers () {                                  //récupé
 
       // CREATION DU LIEN ENTRE INDEX.HTML ET PHOTOGRAPHER.HTML
         article.addEventListener("click", ()=>{
-        window.location.href=`photographer.html?id=${id}`;         
+        window.location.href=`photographer.html?index=${this._index}`;         
     //A REVOIR CAR LE LIEN DOIT ETRE SUR LA PHOTO ET LE NOM UNIQUEMENT 
         })  
 
