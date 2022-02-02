@@ -2,8 +2,36 @@ async function getPhotographers () {                                  //récupé
     let response = await fetch ("data/photographers.json")
     let photographers = await response.json()
     return photographers
-    }
 
+    }
+    class photographePattern{
+        constructor(index){
+            this._name = data.name
+            this._id = data.id
+            this._city = data.city
+            this._country = data.country
+            this._tagline = data.tagline
+            this._portrait = data.portrait
+        }
+        get name(){
+            return this._name
+        }
+        get id(){
+            return this._id
+        }
+        get city(){
+            return this._city
+        }
+        get country(){
+            return this._country
+        }
+        get tagline(){
+            return this._tagline
+        }
+        get portrait(){
+            return `/assets/photographers/${this._portrait}`
+        }
+    }
 // CREATION DES CONSTANTES ET DES ELEMENTS AJOUTES DANS HTML ET QUI RECUPERENT LES INFOS JSON
 
     function photographerFactory(data){                                 //1ère fonction qui permet d'englober le return vers la fonction getUserCardDom
@@ -22,10 +50,10 @@ async function getPhotographers () {                                  //récupé
 
       // CREATION DU LIEN ENTRE INDEX.HTML ET PHOTOGRAPHER.HTML
         article.addEventListener("click", ()=>{
-        window.location.href=`photographer.html?id=${this._id}`;         
+        window.location.href=`photographer.html?id=index`;         
     //A REVOIR CAR LE LIEN DOIT ETRE SUR LA PHOTO ET LE NOM UNIQUEMENT 
-        })                                                
-        
+        })  
+
         img.setAttribute("src",picture);
         h2.textContent = name;
         h3.textContent = city +" "+ country;
