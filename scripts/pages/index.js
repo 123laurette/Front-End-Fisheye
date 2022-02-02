@@ -4,34 +4,7 @@ async function getPhotographers () {                                  //récupé
     return photographers
 
     }
-    class photographePattern{
-        constructor(index){
-            this._name = data.name
-            this._id = data.id
-            this._city = data.city
-            this._country = data.country
-            this._tagline = data.tagline
-            this._portrait = data.portrait
-        }
-        get name(){
-            return this._name
-        }
-        get id(){
-            return this._id
-        }
-        get city(){
-            return this._city
-        }
-        get country(){
-            return this._country
-        }
-        get tagline(){
-            return this._tagline
-        }
-        get portrait(){
-            return `/assets/photographers/${this._portrait}`
-        }
-    }
+   
 // CREATION DES CONSTANTES ET DES ELEMENTS AJOUTES DANS HTML ET QUI RECUPERENT LES INFOS JSON
 
     function photographerFactory(data){                                 //1ère fonction qui permet d'englober le return vers la fonction getUserCardDom
@@ -50,7 +23,7 @@ async function getPhotographers () {                                  //récupé
 
       // CREATION DU LIEN ENTRE INDEX.HTML ET PHOTOGRAPHER.HTML
         article.addEventListener("click", ()=>{
-        window.location.href=`photographer.html?id=index`;         
+        window.location.href=`photographer.html?id=${id}`;         
     //A REVOIR CAR LE LIEN DOIT ETRE SUR LA PHOTO ET LE NOM UNIQUEMENT 
         })  
 
@@ -60,7 +33,7 @@ async function getPhotographers () {                                  //récupé
         h4.textContent = tagline;
         p.textContent = price + "€/jour";
         
-        article.appendChild(img);                                   //Mettre les nouveaux éléments en enfant d'article
+        article.appendChild(img)
         article.appendChild(h2);
         article.appendChild(h3);
         article.appendChild(h4);

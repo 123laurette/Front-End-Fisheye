@@ -50,6 +50,7 @@ h1 {
     height: 200px;
     width: 200px;
     border-radius: 50%;
+    object-fit: cover;
 }
 .photographer_section article h3 {
     color: #901C1c;
