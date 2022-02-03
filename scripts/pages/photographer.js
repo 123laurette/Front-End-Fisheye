@@ -1,6 +1,6 @@
 //Mettre le code JavaScript lié à la page photographer.html
 
-async function newgetPhotographers (index) {                                  //récupération du JSON
+async function newgetPhotographers (data) {                                  //récupération du JSON
     let response = await fetch ("data/photographers.json")
     let photographers = await response.json()
     return photographers
