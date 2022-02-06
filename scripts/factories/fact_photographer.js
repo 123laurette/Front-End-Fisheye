@@ -9,8 +9,9 @@ class Photographer {
         this.portrait = data.portrait
         this.index = index
     }
-  }
-  
+}
+
+
 async function getPhotographers(index){
     const resultat = await fetch ("data/photographers.json")
     const photographers = await resultat.json()
@@ -49,33 +50,55 @@ async function getMedias(photographer){
     })
 };
 
+const filters = document.querySelectorAll("#filter_elements p");
+filters.forEach(filter => {
+    filter.addEventListener("click", e => {
+        switch(e.target.id) {
+            case "filter_pop":
+                photographerMedias.sort(function(a, b){
+                    return b.likes - a.likes;
+                })
+            break
 
+            case"filter_titre":
+                pphotographerMedias.sort(function(a, b){
+                    return a.title.localCompare(b.title);
+                })
+            break
+
+            case "filter_date":
+                photographerMedias.sort(function(a, b){
+                    return new Date(b.date) - new Date(a.date);
+            })
+        break
+        }
+    })
+})
 async function init(photographerId){
     const photographer = await getPhotographers(photographerId);
-    const medias = await getMedias(photographer);
+    const infosPhotographe = document.querySelector(".infos_photographe");
+    const photoPhotographe = document.querySelector(".photo");
 
-    const photographHeader = document.querySelector(".photograph-header");
     const contactButton = document.querySelector("#contact_button");
     const photographerHeaderDiv = document.createElement("div");
-    photographHeader.insertBefore(photographerHeaderDiv, contactButton);
 
     const h2 = document.createElement("h2");
     h2.textContent = this.name;
     const h3 = document.createElement("h3");
-    h3.textContent = this.city + this.country;
+    h3.textContent = this.city, this.country;
     const h4 = document.createElement("h4");
     h4.textContent = this.tagline;
     
-    photographerHeaderDiv.appendChild(h2);
-    photographerHeaderDiv.appendChild(h3);
-    photographerHeaderDiv.appendChild(h4);
+    infosPhotographe.appendChild(h2);
+    infosPhotographe.appendChild(h3);
+    infosPhotographe.appendChild(h4);
 
     const picture = `assets/photographers/${this.portrait}`;
+    console.log(picture)
 
     const img = document.createElement("img");
     img.setAttribute("src", picture);
-    photographHeader.appendChild(img);
-    console.log(picture)
+    photoPhotographe.appendChild(img);
 }
 const photographerId = new URLSearchParams(window.location.search).get("id");
 console.log(photographerId);
