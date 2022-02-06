@@ -1,5 +1,6 @@
 // CREATION DES CONSTANTES ET DES ELEMENTS AJOUTES DANS HTML ET QUI RECUPERENT LES INFOS JSON
 
+
 function photographerFactory(data){                                 //1ère fonction qui permet d'englober le return vers la fonction getUserCardDom
         
     function getUserCardDOM() {                                     //2ème fonction qui crée les constantes et les éléments
