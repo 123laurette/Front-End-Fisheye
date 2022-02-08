@@ -1,4 +1,4 @@
-class media {
+/*class media {
     constructor(data) {
         this._id = data.id
         this._photographerId = data.photographerId
@@ -37,10 +37,9 @@ class media {
 async function getMedia(photographerId){
     const response = await fetch ("data/photographers.json")
     const medias = await response.json()
-    console.log(medias)
 
-    medias = medias.media
     
     return medias
 }
-console.log(medias)
+
+const mediaPhotographer = getMedia(photographerId);*/
