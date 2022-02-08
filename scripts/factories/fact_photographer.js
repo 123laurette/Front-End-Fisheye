@@ -1,7 +1,7 @@
 
-function photographerFactory(data){                                 //1ère fonction qui permet d'englober le return vers la fonction getUserCardDom
+function photographerFactory(data){                                 
         
-    function getUserCardDOM() {                                     //2ème fonction qui crée les constantes et les éléments
+    function getUserCardDOM() {                                     
       const {portrait, name, city, country, tagline} = data;
       const infosPhotographe = document.querySelector(".infos_photographe"); 
 
