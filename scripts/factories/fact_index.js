@@ -23,7 +23,7 @@ function photographerFactory(data){                                 //1ère fonc
 
       img.setAttribute("src",picture);
       h2.textContent = name;
-      h3.textContent = city +" "+ country;
+      h3.textContent = city +", "+ country;
       h4.textContent = tagline;
       p.textContent = price + "€/jour";
     

@@ -11,7 +11,7 @@ function photographerFactory(data){                                 //1ère fonc
       const h4 = document.createElement("h4");
 
       h2.textContent = name;
-      h3.textContent = city +" "+ country;
+      h3.textContent = city +", "+ country;
       h4.textContent = tagline;
     
       infosPhotographe.appendChild(h2);
@@ -22,6 +22,7 @@ function photographerFactory(data){                                 //1ère fonc
       const picture = `assets/photographers/${portrait}`;
       const img = document.createElement( "img" );
       img.setAttribute("src",picture);
+      img.setAttribute("alt",name);
       photoPhotographe.appendChild(img)
 
     }
