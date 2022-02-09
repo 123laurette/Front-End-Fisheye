@@ -1,3 +1,4 @@
+//...............PAGE D'ACCUEIL.............
 function photographerFactory(data){                                 //1ère fonction qui permet d'englober le return vers la fonction getUserCardDom
         
   function getUserCardDOM() {                                     //2ème fonction qui crée les constantes et les éléments
@@ -33,6 +34,9 @@ function photographerFactory(data){                                 //1ère fonc
   }
 return{getUserCardDOM}
 }
+
+
+//..............PAGE DU PHOTOGRAPHE...............
 function photographerFactoryInfo(data){                                 
         
     function getUserCardDOM() {                                     
@@ -58,6 +62,9 @@ function photographerFactoryInfo(data){
       img.setAttribute("src",picture);
       img.setAttribute("alt",name);
       photoPhotographe.appendChild(img);
+
+      document.getElementById("titre_modal").innerHTML = // je cible l'id concerné et le texte déjà inscrit
+      document.getElementById("titre_modal").innerHTML + "<br/>" + data.name; //je récupère le texte qui est présent dans id titre modal et j'y ajoute un retour à la ligne et le nom du photographe concerné
 
     }
   return{getUserCardDOM}

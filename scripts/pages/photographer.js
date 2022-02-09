@@ -32,6 +32,7 @@ async function getMedia(){
     const response = await fetch ("data/photographers.json");
     let medias = await response.json();
     medias = medias.media;
+
     console.log(medias);
 }
 function displayDataMedia(photographer) {                      
@@ -41,14 +42,12 @@ function displayDataMedia(photographer) {
 
         const mediaModel = mediaFactory (media);
         const userMediaDOM = mediaModel.getUserMediaDOM();
-        images.appenchild(userMediaDOM) ;
-        console.log(userMediaDOM)
-
+        images.appenchild(userMediaDOM);
     }});
 }
 async function displayMedia(){                                              
-    const {medias} = await getMedia();
-    displayDataMedia(medias);
+    const {media, photographers} = await getMedia();
+    displayDataMedia(media);
 }
 displayMedia (); 
 
