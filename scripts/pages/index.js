@@ -20,4 +20,5 @@ async function display(){                                              //Fonctio
   const {photographers} = await getPhotographers();               //const photographers récupère le tableau du JSON
   displayData(photographers);
 }
-display ()                                                               //Active la fonction init
+display () 
+
