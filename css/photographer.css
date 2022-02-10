@@ -94,9 +94,14 @@
         }
 
 /*..............MEDIAS...........*/
+.cartes_medias{
+    display: flex;
+    width: 90%;
+    flex-wrap: wrap;
+}
 .carte_media{
     height: 400px;
-    width: 350px;
+    width: 30%;
     display: flex;
     flex-direction: column;
 }

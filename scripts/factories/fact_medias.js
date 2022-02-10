@@ -4,7 +4,11 @@ function mediaFactory(data){
         
     function getUserMediaDOM() {                                     
         const {image, title, likes} = data;
-        const carteMedia = document.querySelector(".carte_media"); 
+        const cartesMedias = document.querySelector(".cartes_medias");
+        
+        const carteMedia = document.createElement("div");
+        cartesMedias.appendChild(carteMedia);
+        carteMedia.classList.add("carte_media");
         
         const photo = `assets/photographers/${image}`;
         const img = document.createElement( "img" );
