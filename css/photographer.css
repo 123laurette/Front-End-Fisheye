@@ -6,6 +6,7 @@
     font-weight: normal;
     font-style: normal;
 }
+
 .photograph-header {
     display: flex;
     justify-content: space-around;
@@ -98,29 +99,45 @@
     display: flex;
     width: 90%;
     flex-wrap: wrap;
+    justify-content: space-between;
+    margin: auto;
+    margin-top: 30px;
 }
 .carte_media{
-    height: 400px;
+    height: 310px;
     width: 30%;
     display: flex;
     flex-direction: column;
+    margin-bottom: 80px;
 }
     .carte_media img{
         height: 300px;
         width: 100%;
         border-radius: 5px;
+        object-fit: cover
     }
     .info_photo{
         display: flex;
+        justify-content: space-around;
+        align-items: center;
+        height: 50px;
     }
         .info_photo h2, h3{
             color: #901C1C;
             font-size: 24px;
         }
+        .info_photo h3{
+            margin-right: -30px;
+        }
+        .info_photo h2{
+            width: 80%;
+            margin-left: -20px;
+            
+        }
         .info_photo i{
             color: #901C1C;
-            width: 17px;
-            height: 18px;
+            font-size: 24px;
+            margin-right: -10px;
         }
     
 
@@ -136,9 +153,9 @@
     align-items: center;
     justify-content: space-between;
     padding: 70px;
-    margin-top: -20%;
     margin-left: 30%;
     position: absolute;
+    top: 9%;
 }
     .modal header {
         justify-content: space-between;

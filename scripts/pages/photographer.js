@@ -18,38 +18,25 @@ function displayData(photographers) {  //function qui concerne tous les photogra
         const userCardDOM = photographerModel.getUserCardDOM();     //creation de la const qui regroupe la 1ère et la 2ème fonction de create pour un photographe
     }});
 }
+function displayDataMedia(medias) {                      
 
+    medias.forEach(media=> {
+        if (media.photographerId == photographerId){
+        const mediaModel = mediaFactory (media);
+        const userMediaDOM = mediaModel.getUserMediaDOM();
+    }});
+}
 async function display(){                                              
     const {photographers, media} = await getPhotographers();  //créat de la const qui doit récupérer les données json  via la f. fetch
-    displayData(photographers);    // applique la fonction displayData pour tous les photographes
+    displayData(photographers); 
+    displayDataMedia(media);
+    // applique la fonction displayData pour tous les photographes
 }
 display ();                         //applique la fonction display pour afficher les données demandées
 
 
 
-//...............APPARITION DES MEDIAS DU PHOTOGRAPHE..............
-async function getMedia(){
-    const response = await fetch ("data/photographers.json");
-    let medias = await response.json();
-    medias = medias.media;
 
-    console.log(medias);
-}
-function displayDataMedia(photographer) {                      
-
-    medias.forEach(media=> {
-        if (media.photographerId == photographer.id){
-
-        const mediaModel = mediaFactory (media);
-        const userMediaDOM = mediaModel.getUserMediaDOM();
-        images.appenchild(userMediaDOM);
-    }});
-}
-async function displayMedia(){                                              
-    const {media, photographers} = await getMedia();
-    displayDataMedia(media);
-}
-displayMedia (); 
 
 
 
@@ -73,7 +60,7 @@ const date = document.querySelector(".date");
 const titre = document.querySelector(".titre");
 const choix = document.querySelector(".choix");
 
-ouvert.addEventListener("click",chevronOuvert)
+ouvert.addEventListener("click",chevronOuvert);
 
 function chevronOuvert (){
     fermer.style.display = "block";
@@ -83,7 +70,7 @@ function chevronOuvert (){
     choix.style.height = "160px";
 }
 
-fermer.addEventListener("click",chevronFermer)
+fermer.addEventListener("click",chevronFermer);
 
 function chevronFermer (){
     fermer.style.display = "none";
