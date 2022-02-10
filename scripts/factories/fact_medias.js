@@ -25,8 +25,7 @@ function mediaFactory(data){
 
         h2.textContent = title;
         h3.textContent = likes;
-        
-        
+
         carteMedia.appendChild("infoPhoto");
         infoPhoto.appendChild(h2);
         infoPhoto.appendChild(h3);
