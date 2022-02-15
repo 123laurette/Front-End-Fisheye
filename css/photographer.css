@@ -73,12 +73,18 @@
         padding-right: 15px;
         box-shadow: grey 2px 2px 7px;
         margin-top: 5px;
+        cursor: pointer;
     }
         .choix i{
             position: absolute;
             margin-left: 180px;
             margin-top: 20px;
         }
+        .choix p:hover{
+            font-weight: 900;
+        }
+
+        
         #fermer{
             display: none;
         }
@@ -93,6 +99,9 @@
             margin: 0%;
             padding: 15px;
         }
+        
+
+        
 
 /*..............MEDIAS...........*/
 .cartes_medias{
@@ -110,7 +119,7 @@
     flex-direction: column;
     margin-bottom: 80px;
 }
-    .carte_media img{
+    .carte_media img, video{
         height: 300px;
         width: 100%;
         border-radius: 5px;

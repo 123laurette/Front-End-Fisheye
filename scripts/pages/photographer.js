@@ -1,9 +1,9 @@
 
-//............APPARITION HEADER DU PHOTOGRAPHE................
+//............APPARITION HEADER + MEDIAS DU PHOTOGRAPHE................
 async function getPhotographers () {                                  
     const response = await fetch ("data/photographers.json");  //appel du json
     const data = await response.json();   // recup des données du json
-    return data;                            //  retourne les données json
+    return data;                           //  retourne les données json
 }
 
 let url = new URL(window.location.href);
@@ -24,30 +24,17 @@ function displayDataMedia(medias) {
         if (media.photographerId == photographerId){
         const mediaModel = mediaFactory (media);
         const userMediaDOM = mediaModel.getUserMediaDOM();
-    }});
+        }
+    })
 }
 async function display(){                                              
     const {photographers, media} = await getPhotographers();  //créat de la const qui doit récupérer les données json  via la f. fetch
     displayData(photographers); 
     displayDataMedia(media);
     // applique la fonction displayData pour tous les photographes
+
 }
 display ();                         //applique la fonction display pour afficher les données demandées
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 
 
@@ -79,3 +66,48 @@ function chevronFermer (){
     titre.style.display = "none";
     choix.style.height = "60px";
 } 
+//...............MISE EN PLACE DES FILTRES DE TRIE........................
+async function displayFiltre(){
+    const {photographers, media} = await getPhotographers();
+    creatFiltre(media);
+}
+displayFiltre();
+
+function creatFiltre (media){
+const menuFiltre = document.querySelectorAll(".choix p");
+console.log(menuFiltre);
+
+
+const filtreLikes = (`getPhotographers().media,${likes}`);
+const filtreDate = (`getPhotographers().media,${date}`);
+//const filtreTitre = (`getPhotographers().media,${title}`);
+
+console.log(filtreLikes);
+console.log(filtreDate);
+//console.log(filtreTitre);
+
+        
+menuFiltre.forEach(filtre => {
+    filtre.addEventListener("click",e => {
+        switch (e.target.class) {
+            case "pop":
+                filtreLikes.sort (function (a,b) {
+                return b.likes - a.likes;
+                })
+                break
+                    
+            case "date":
+                filtreDate.sort(function (a, b){
+                return b.date - a.date;
+                })
+                break
+
+            case "titre":
+                filtreTitre.sort(function (a, b) {
+                return a.title - b.title;
+                })
+                break
+        }
+    });
+})}
+
