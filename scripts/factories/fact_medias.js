@@ -3,7 +3,7 @@
 function mediaFactory(data){                                 
         
     function getUserMediaDOM() {                                     
-        const {image, video, title, likes,price} = data;
+        const {image, video, title, likes} = data;
         const cartesMedias = document.querySelector(".cartes_medias");
         
         const carteMedia = document.createElement("article");
@@ -49,27 +49,30 @@ function mediaFactory(data){
         infoPhoto.appendChild(h3);
         infoPhoto.appendChild(coeur);
 
-
-// REVOIR LE BANDEAU DE FIN PAGE doit être pour le photographe
-
-        /*const bandeauHtml = document.querySelector(".bandeau");
-        console.log(bandeauHtml);
-
-        const h3b = document.createElement("h3")
-        const coeurb = document.createElement("i");
-        const h4 = document.createElement("h4");
-
-        h3b.classList = "Total_likes";
-        h3b.textContent = likes;
-        coeurb.className = "fas fa-heart";
-        h4.classList = "prix";
-        h4.textContent = price + "/jour";
-
-        bandeauHtml.appendChild(h3b);
-        bandeauHtml.appendChild(coeurb);
-        bandeauHtml.appendChild(h4);*/
-
-
     }
     return{getUserMediaDOM}
 }
+
+
+//Bandeau a revoir car il ne veut pas des valeurs json
+
+function bandeau(){
+const bandeauHtml = document.querySelector(".bandeau");
+console.log(bandeauHtml);
+bandeauHtml.classList = "bandeauPhotographer"
+
+const h4b = document.createElement("h4")
+const coeurb = document.createElement("i");
+const h4 = document.createElement("h4");
+
+h4b.classList = "total_likes";
+h4b.textContent = "mettre le total";
+coeurb.className = "fas fa-heart";
+h4.classList = "prix";
+h4.textContent = "prix" + "/jour";
+
+bandeauHtml.appendChild(h4b);
+bandeauHtml.appendChild(coeurb);
+bandeauHtml.appendChild(h4);
+}
+bandeau();

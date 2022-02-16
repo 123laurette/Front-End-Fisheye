@@ -18,12 +18,51 @@ function displayData(photographers) {  //function qui concerne tous les photogra
         const userCardDOM = photographerModel.getUserCardDOM();     //creation de la const qui regroupe la 1ère et la 2ème fonction de create pour un photographe
     }});
 }
+
 function displayDataMedia(medias) {                      
 
     medias.forEach(media=> {
         if (media.photographerId == photographerId){
         const mediaModel = mediaFactory (media);
         const userMediaDOM = mediaModel.getUserMediaDOM();
+        
+
+        //..........mise en place du menu filre........
+
+        const menuFiltre = document.querySelectorAll(".choix p");
+        
+        //.......constantes pour vérifier le ciblage des données......
+        /*const filtreLikes = media.likes;
+        const filtreDate = media.date;
+        const filtreTitre = media.title;
+        console.log(filtreLikes);
+        console.log(filtreDate);
+        console.log(filtreTitre);*/
+        //......................................................
+        
+        menuFiltre.forEach(filtre => {
+            filtre.addEventListener("click",e => {
+                switch (e.target.class) {
+                    case "pop":
+                        medias.sort (function (a,b) {
+                        return b.likes - a.likes;
+                        })
+                    break
+                        
+                    case "date":
+                        media.sort(function (a, b){
+                        return b.date - a.date;
+                        })
+                    break
+    
+                    case "titre":
+                        media.sort(function (a, b) {
+                        return a.title - b.title;
+                        })
+                    break
+                }
+            })
+        })
         }
     })
 }
@@ -31,7 +70,10 @@ async function display(){
     const {photographers, media} = await getPhotographers();  //créat de la const qui doit récupérer les données json  via la f. fetch
     displayData(photographers); 
     displayDataMedia(media);
+
     // applique la fonction displayData pour tous les photographes
+    //const filtreLikes = media.likes;
+    //console.log (filtreLikes)
 
 }
 display ();                         //applique la fonction display pour afficher les données demandées
@@ -66,48 +108,5 @@ function chevronFermer (){
     titre.style.display = "none";
     choix.style.height = "60px";
 } 
-//...............MISE EN PLACE DES FILTRES DE TRIE........................
-async function displayFiltre(){
-    const {photographers, media} = await getPhotographers();
-    creatFiltre(media);
-}
-displayFiltre();
 
-function creatFiltre (media){
-const menuFiltre = document.querySelectorAll(".choix p");
-console.log(menuFiltre);
-
-
-const filtreLikes = (`getPhotographers().media,${likes}`);
-const filtreDate = (`getPhotographers().media,${date}`);
-//const filtreTitre = (`getPhotographers().media,${title}`);
-
-console.log(filtreLikes);
-console.log(filtreDate);
-//console.log(filtreTitre);
-
-        
-menuFiltre.forEach(filtre => {
-    filtre.addEventListener("click",e => {
-        switch (e.target.class) {
-            case "pop":
-                filtreLikes.sort (function (a,b) {
-                return b.likes - a.likes;
-                })
-                break
-                    
-            case "date":
-                filtreDate.sort(function (a, b){
-                return b.date - a.date;
-                })
-                break
-
-            case "titre":
-                filtreTitre.sort(function (a, b) {
-                return a.title - b.title;
-                })
-                break
-        }
-    });
-})}
 
