@@ -30,16 +30,16 @@ function displayDataMedia(medias) {
         //..........mise en place du menu filre........
 
         const menuFiltre = document.querySelectorAll(".choix p");
-        
+        console.log(menuFiltre)
         //.......constantes pour vérifier le ciblage des données......
-        /*const filtreLikes = media.likes;
+        const filtreLikes = media.likes;
         const filtreDate = media.date;
         const filtreTitre = media.title;
         console.log(filtreLikes);
         console.log(filtreDate);
-        console.log(filtreTitre);*/
+        console.log(filtreTitre);
         //......................................................
-        
+
         menuFiltre.forEach(filtre => {
             filtre.addEventListener("click",e => {
                 switch (e.target.class) {
