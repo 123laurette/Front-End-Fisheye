@@ -18,27 +18,26 @@
     .infos_photographe {
         width: 30%;
         height: 100%;
-        margin-left: -60px;
+        margin-left: -170px;
     }
 
         .infos_photographe h2 {
-            font-size: 64px;
+            font-size: 50px;
             color: #d3573c;
-            height: 65px;
+            margin-top: 50px;
         }
         .infos_photographe h3 {
-            height: 24px;
             color: #901C1C;
+            margin-top: -20px;
         }
         .infos_photographe h4 {
-            height: 18px;
             color: #757575;
         }
     .photo img{
         height: 200px;
         width: 200px;
         border-radius: 50%;
-        margin-right: -50px;
+        margin-right: -170px;
         object-fit: cover;
     }
     .contact_button {
@@ -59,94 +58,69 @@
 /*.........................MENU DES MEDIAS...........*/
 .tri{
     display: flex;
-    margin-left: 130px;
+    margin-left: 100px;
     margin-top: 10px;
     font-size: 18px;
     position: relative;
 }
     .choix{
         background-color: #901c1c;
+        border: #901c1c;
         width: 10%;
         margin-left: 45px;
         color: white;
         border-radius: 5px;
-        padding-right: 15px;
+        padding-left: 20px;
         box-shadow: grey 2px 2px 7px;
         margin-top: 5px;
         cursor: pointer;
+        font-size: 18px;
     }
-        .choix i{
-            position: absolute;
-            margin-left: 180px;
-            margin-top: 20px;
-        }
-        .choix p:hover{
-            font-weight: 900;
-        }
-
-        
-        #fermer{
-            display: none;
-        }
-
-        .date, .titre{
-            display: none;
-            border-top: white solid 1px;
-            padding-top: 7px;
-        }
-        .pop, .date, .titre{
-            width: 90%;
-            margin: 0%;
-            padding: 15px;
-        }
-        
-
-        
+    
 
 /*..............MEDIAS...........*/
 .cartes_medias{
     display: flex;
-    width: 90%;
+    width: 95%;
+    height: 1600px;
     flex-wrap: wrap;
-    justify-content: space-between;
+    justify-content:space-around;
     margin: auto;
     margin-top: 30px;
 }
 .carte_media{
-    height: 310px;
-    width: 30%;
+    height: 360px;
+    width: 26%;
     display: flex;
     flex-direction: column;
-    margin-bottom: 80px;
 }
     .carte_media img, video{
-        height: 300px;
+        height: 310px;
         width: 100%;
         border-radius: 5px;
-        object-fit: cover
+        object-fit: cover;
     }
     .info_photo{
         display: flex;
         justify-content: space-around;
         align-items: center;
-        height: 50px;
+        width: 100%;
+        height: 38px;
     }
         .info_photo h2, h3{
             color: #901C1C;
-            font-size: 24px;
-        }
-        .info_photo h3{
-            margin-right: -30px;
+            font-size: 20px;
         }
         .info_photo h2{
-            width: 80%;
-            margin-left: -20px;
+            width: 80%;   
+        }
+        .info_photo h3{
+            margin-right: 0px;
             
         }
         .info_photo i{
             color: #901C1C;
-            font-size: 24px;
-            margin-right: -10px;
+            font-size: 20px;
         }
     
 .bandeauPhotographer{
@@ -158,10 +132,10 @@
     height: 70px;
     position: fixed;
     z-index: 1;
-    border-radius: 5px;
+    border-radius: 5px 5px 0 0;
     right: 0;
     bottom: 0;
-    margin-right: 30px;
+    margin-right: 50px;
 }
 .total_likes, .prix{
     font-size: 24px;
@@ -230,3 +204,23 @@
             margin-left: 2px;
             margin-top: 15px;
         }
+        .formData[data-error]::after {
+            content: attr(data-error);
+            font-size: 15px;
+            color: #e54858;
+            display: block;
+            line-height: 0.3;
+            opacity: 0;
+            transition: 0.3s;
+            margin-left: 30px;
+        }
+            .formData[data-error-visible="true"]::after {
+                opacity: 1;
+            }
+            .formData[data-error-visible="true"] .text-control {
+                border: 2px solid #e54858;
+            }
+            input[data-error]::after {
+                content: attr(data-error);
+                color: red;
+            }

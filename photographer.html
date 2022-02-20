@@ -21,13 +21,11 @@
       <section class="photograph_medias">
         <div class="tri">
           <p class="trier_par">Trier par</p>
-          <div class="choix">
-            <i  class="fas fa-chevron-up" id="fermer"></i>
-            <i  class="fas fa-chevron-down" id="ouvert"></i>
-            <p class="pop">Popularité</p>
-            <p class="date">Date</p>
-            <p class="titre">Titre</p>
-          </div>
+          <select class="choix">
+            <option class="pop" value="pop">Popularité</option>
+            <option class="date" value="date">Date</option>
+            <option class="titre" value="titre">Titre</option>
+          </select>
         </div>
         <div class="cartes_medias">
 
@@ -45,12 +43,11 @@
 				<form>
 					<div class=formData>
 						<label for="first">Prénom</label>
-						<input class= "text-control" type="text" id="first" name="first" required/>
-            <span class="prenom_error"></span>
+						<input class= "text-control" type="text" id="first" name="first" required minlength="2"/>
           </div>
           <div class=formData>
 						<label for="last">Nom</label>
-						<input class= "text-control" type="text" id="last" name="last" required/>
+						<input class= "text-control" type="text" id="last" name="last" required minlength="2"/>
 					</div>
           <div class=formData>
 						<label for="email">Email</label>
@@ -60,7 +57,7 @@
 						<label for="message">Votre message</label>
 						<input class= "text-control" type="text" id="message" name="message"/>
 					</div>
-          <button class="contact_button">Envoyer</button>
+          <button class="contact_button" id="envoyer">Envoyer</button>
 				</form>
 			</div>
 		</div>

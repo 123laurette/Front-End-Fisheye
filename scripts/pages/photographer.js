@@ -8,6 +8,7 @@ async function getPhotographers () {
 
 let url = new URL(window.location.href);
 let photographerId = url.searchParams.get("id");
+console.log(photographerId)
 
 function displayData(photographers) {  //function qui concerne tous les photographe     
 
@@ -18,63 +19,61 @@ function displayData(photographers) {  //function qui concerne tous les photogra
         const userCardDOM = photographerModel.getUserCardDOM();     //creation de la const qui regroupe la 1ère et la 2ème fonction de create pour un photographe
     }});
 }
-
 function displayDataMedia(medias) {                      
 
     medias.forEach(media=> {
         if (media.photographerId == photographerId){
         const mediaModel = mediaFactory (media);
         const userMediaDOM = mediaModel.getUserMediaDOM();
-        
-
-        //..........mise en place du menu filre........
-
-        const menuFiltre = document.querySelectorAll(".choix p");
-        console.log(menuFiltre)
-        //.......constantes pour vérifier le ciblage des données......
-        const filtreLikes = media.likes;
-        const filtreDate = media.date;
-        const filtreTitre = media.title;
-        console.log(filtreLikes);
-        console.log(filtreDate);
-        console.log(filtreTitre);
-        //......................................................
-
-        menuFiltre.forEach(filtre => {
-            filtre.addEventListener("click",e => {
-                switch (e.target.class) {
-                    case "pop":
-                        medias.sort (function (a,b) {
-                        return b.likes - a.likes;
-                        })
-                    break
-                        
-                    case "date":
-                        media.sort(function (a, b){
-                        return b.date - a.date;
-                        })
-                    break
-    
-                    case "titre":
-                        media.sort(function (a, b) {
-                        return a.title - b.title;
-                        })
-                    break
-                }
-            })
-        })
         }
     })
 }
+
+
+//..........MENU FILTRES..........
+
+
+
+async function tri(media){
+    const photographerMedia = new mediaFactory (media);
+            console.log(photographerMedia)
+
+    const menuSelect = document.querySelector(".choix");
+    menuSelect.addEventListener("click", e => {
+        switch(e.target.class){
+            
+            case "pop" :
+                photographerMedia.sort (function (a, b) {
+                    return b.likes - a.likes;
+                })
+            break
+
+            case "date" :
+                photographerMedia.sort (function (a, b) {
+                    return b.date - a.date;
+                })
+            break
+
+            case "titre" :
+                photographerMedia.sort (function (a, b) {
+                    return a.title - b.title;
+                })
+            break
+        }
+    })
+}
+tri();
+
+
+
+
+
+
+
 async function display(){                                              
     const {photographers, media} = await getPhotographers();  //créat de la const qui doit récupérer les données json  via la f. fetch
     displayData(photographers); 
     displayDataMedia(media);
-
-    // applique la fonction displayData pour tous les photographes
-    //const filtreLikes = media.likes;
-    //console.log (filtreLikes)
-
 }
 display ();                         //applique la fonction display pour afficher les données demandées
 
@@ -82,7 +81,7 @@ display ();                         //applique la fonction display pour afficher
 
 
 //.............OUVERTURE ET FERMETURE DU MENU..............
-const fermer = document.querySelector("#fermer");
+/*const fermer = document.querySelector("#fermer");
 const ouvert = document.querySelector("#ouvert");
 const pop = document.querySelector(".pop");
 const date = document.querySelector(".date");
@@ -107,6 +106,6 @@ function chevronFermer (){
     date.style.display = "none";
     titre.style.display = "none";
     choix.style.height = "60px";
-} 
+} */
 
 

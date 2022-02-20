@@ -3,7 +3,7 @@
 function mediaFactory(data){                                 
         
     function getUserMediaDOM() {                                     
-        const {image, video, title, likes} = data;
+        const {image, video, title, likes,date} = data;
         const cartesMedias = document.querySelector(".cartes_medias");
         
         const carteMedia = document.createElement("article");
@@ -58,7 +58,7 @@ function mediaFactory(data){
 
 function bandeau(){
 const bandeauHtml = document.querySelector(".bandeau");
-console.log(bandeauHtml);
+
 bandeauHtml.classList = "bandeauPhotographer"
 
 const h4b = document.createElement("h4")
