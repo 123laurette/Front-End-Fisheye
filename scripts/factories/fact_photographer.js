@@ -43,7 +43,6 @@ function photographerFactoryInfo(data){
       const {portrait, name, city, country, tagline} = data;
       const infosPhotographe = document.querySelector(".infos_photographe"); 
 
-    
       const h2 = document.createElement( "h2" );
       const h3 = document.createElement("h3");
       const h4 = document.createElement("h4");

@@ -40,7 +40,7 @@
           <h2 id="titre_modal">Contactez-moi</h2>
           <img src="assets/icons/close.svg" onclick="closeModal()" />
         </header>
-				<form>
+				<form id="formulaire">
 					<div class=formData>
 						<label for="first">Prénom</label>
 						<input class= "text-control" type="text" id="first" name="first" required minlength="2"/>
@@ -55,7 +55,7 @@
 					</div>
           <div class=formData>
 						<label for="message">Votre message</label>
-						<input class= "text-control" type="text" id="message" name="message"/>
+						<textarea class= "text-control" type="text" id="message" name="message" required></textarea>
 					</div>
           <button class="contact_button" id="envoyer">Envoyer</button>
 				</form>

@@ -199,6 +199,10 @@
         }
         #message{
             height: 200px;
+            width: 100%;
+            font-size: 20px;
+            border: none;
+            border-radius: 5px;
         }
         form .contact_button{
             margin-left: 2px;

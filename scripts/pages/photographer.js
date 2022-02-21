@@ -16,7 +16,8 @@ function displayData(photographers) {  //function qui concerne tous les photogra
         if (photographer.id == photographerId){  //si l'id du photographe est égal à l'id de photographerId dans json
 
         const photographerModel = photographerFactoryInfo(photographer); //creation de la const qui met en place la f. de create pour un photographe
-        const userCardDOM = photographerModel.getUserCardDOM();     //creation de la const qui regroupe la 1ère et la 2ème fonction de create pour un photographe
+        const userCardDOM = photographerModel.getUserCardDOM(); 
+         //creation de la const qui regroupe la 1ère et la 2ème fonction de create pour un photographe
     }});
 }
 function displayDataMedia(medias) {                      
@@ -25,6 +26,7 @@ function displayDataMedia(medias) {
         if (media.photographerId == photographerId){
         const mediaModel = mediaFactory (media);
         const userMediaDOM = mediaModel.getUserMediaDOM();
+        
         }
     })
 }

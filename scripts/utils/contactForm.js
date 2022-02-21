@@ -62,7 +62,24 @@ function validEmail(inputEmail) {
     return true;
     }
 }
+// VERIFICATION MESSAGE
 
+let message = document.getElementById("message");
+message.addEventListener("change", validMessage);
+
+function validMessage (){
+
+    if (!message.value){
+        message.parentElement.setAttribute("data-error-visible", "true");
+        message.parentElement.setAttribute("data-error", "Veuillez nous laisser un message svp.");
+        message.style.marginBottom= "18px";
+    return false;
+    } else {
+        message.parentElement.setAttribute("data-error-visible", "false");
+        message.parentElement.setAttribute("data-error", "");
+    return true;
+    }
+}
 // OUVERTURE ET FERMETURE FORMULAIRE
 let modal = document.getElementById("contact_modal");
 
@@ -75,16 +92,18 @@ function closeModal() {
 
 //VALIDATION FORMULAIRE GLOBAL
 
-/*let btnEnvoyer = document.getElementById("envoyer");
+let btnEnvoyer = document.getElementById("envoyer");
 btnEnvoyer.addEventListener("click", validFormulaire);
 
-function validFormulaire() {                                    
-    if (validPrenom() & validNom() & validEmail()) {
-        closeModal();
-    }
-}*/
 
-//************************************************************** */
-  // reste a faire la validation globale et le retour vers la page d'accueil
-  // et revoir l'endroit du message pour que cela prenne plusieurs lignes.
-//************************************************************* */
+function validFormulaire(e) {                                    
+    if (validPrenom() & validNom() & validEmail() & validMessage()) {
+        closeModal();
+        document.getElementById("formulaire").reset();              //Remise à zéro des champs du formulaire
+    }else{
+        e.preventDefault();
+    }
+
+}
+
+
