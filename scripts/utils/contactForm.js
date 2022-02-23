@@ -1,8 +1,4 @@
 
-
-
-
-
 // validation des champs de formulaire..........
 
 // VERIFICATION NOM

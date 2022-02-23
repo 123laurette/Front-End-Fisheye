@@ -2,7 +2,9 @@
 
 function mediaFactory(data){                                 
         
-    function getUserMediaDOM() {                                     
+    function getUserMediaDOM() {  
+        
+        //........CREATION ELEMENTS DOM DE LA PAGE DU PHOTOGRAPHE...........
         const {image, video, title, likes,date} = data;
         const cartesMedias = document.querySelector(".cartes_medias");
         
@@ -10,6 +12,7 @@ function mediaFactory(data){
         carteMedia.classList.add ("carte_media");
         cartesMedias.appendChild(carteMedia);
         const lienMedia = document.createElement ("a");
+        lienMedia.classList.add("lienPhoto");
         
         if("video" in data){
             const photoVideo = document.createElement("video");
@@ -49,11 +52,30 @@ function mediaFactory(data){
         infoPhoto.appendChild(h3);
         infoPhoto.appendChild(coeur);
 
-    }
+
+
+        //........CREATION ELEMENTS DOM DE LA LIGHTBOX...........
+        const lightbox = document.querySelector(".lightbox");
+        const close = document.querySelector(".close i") ;
+        const precedent = document.querySelector(".precedent i");
+        const suivant = document.querySelector(".suivant i");
+        const titreImage = document.querySelector(".titreImage");
+
+        close.className = "far fa-times";
+        precedent.className = "fas fa-angle-left";
+        suivant.className = "fas fa-angle-right";
+        titreImage.textContent = title;
+        return lightbox
+        }
+
     return{getUserMediaDOM}
+
 }
 
 
+
+
+    
 //Bandeau a revoir car il ne veut pas des valeurs json
 
 function bandeau(){

@@ -82,32 +82,6 @@ display ();                         //applique la fonction display pour afficher
 
 
 
-//.............OUVERTURE ET FERMETURE DU MENU..............
-/*const fermer = document.querySelector("#fermer");
-const ouvert = document.querySelector("#ouvert");
-const pop = document.querySelector(".pop");
-const date = document.querySelector(".date");
-const titre = document.querySelector(".titre");
-const choix = document.querySelector(".choix");
 
-ouvert.addEventListener("click",chevronOuvert);
-
-function chevronOuvert (){
-    fermer.style.display = "block";
-    ouvert.style.display = "none";
-    date.style.display = "block";
-    titre.style.display = "block";
-    choix.style.height = "160px";
-}
-
-fermer.addEventListener("click",chevronFermer);
-
-function chevronFermer (){
-    fermer.style.display = "none";
-    ouvert.style.display = "block";
-    date.style.display = "none";
-    titre.style.display = "none";
-    choix.style.height = "60px";
-} */
 
 

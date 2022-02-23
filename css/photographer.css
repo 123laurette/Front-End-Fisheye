@@ -143,6 +143,11 @@
     margin-right: 20px;
 }
 
+
+
+
+
+
 /*....................MODAL..............*/
 .modal {
     border-radius: 5px;
@@ -228,3 +233,69 @@
                 content: attr(data-error);
                 color: red;
             }
+
+
+
+
+
+
+/*...................LIGHTBOX..............*/
+/*.lightbox{
+    display: none;
+}*/
+/*.lightbox {
+    position: fixed;
+    top: 0;
+    left: 0;
+    display: flex;
+    justify-content: center;
+    width: 95%; 
+    height: 100vh;
+    background-color: #ffffff;
+    z-index: 10;
+    padding: 25px 50px;
+    transition: opacity 300ms;
+}
+
+.lightbox {
+    opacity: 0;
+}
+
+/*.precedent,
+.suivant {
+    border: none;
+    width: 48px;
+    height: 100%;
+    z-index: 2;
+    text-indent: -10000px;
+    cursor: pointer;
+}
+
+
+.close {
+    border: none;
+    width: 42px;
+    height: 42px;
+    position: relative;
+    top: 0px;
+    right: 42px;
+    text-indent: -10000px;
+    z-index: 100;
+    cursor: pointer;
+}
+
+.image {
+    display: flex;
+    flex-direction: column;
+    align-content: center;
+    
+    height: 100%;
+    padding: 0 25px;
+}
+
+.image img,
+.image video{
+    width: auto;
+    height: 90vh;
+    box-shadow: 5px 0px 1px grey;
+}*/
