@@ -39,7 +39,7 @@
 
 function displayLightbox(){
     
-    lightbox.style.display = block
+    lightbox.style.display = block;
     lien (medias);
     close();
     suiv();

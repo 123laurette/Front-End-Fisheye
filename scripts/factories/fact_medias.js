@@ -7,7 +7,7 @@ function mediaFactory(data){
         //........CREATION ELEMENTS DOM DE LA PAGE DU PHOTOGRAPHE...........
         const {image, video, title, likes,date} = data;
         const cartesMedias = document.querySelector(".cartes_medias");
-        
+        cartesMedias.innerHTML = "";
         const carteMedia = document.createElement("article");
         carteMedia.classList.add ("carte_media");
         cartesMedias.appendChild(carteMedia);
