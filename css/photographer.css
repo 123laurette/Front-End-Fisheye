@@ -8,36 +8,42 @@
 }
 
 .photograph-header {
-    display: flex;
-    justify-content: space-around;
-    align-items: center;
     background-color: #FAFAFA;
     height: 313px;
     margin: 0 100px;
 }
-    .infos_photographe {
+.photographerHeader {
+    display: flex;
+    width: 100%;
+    justify-content: space-around;
+    align-items: center;
+}
+    .infosPhotographe {
+        display: flex;
+        flex-direction: column;
         width: 30%;
         height: 100%;
-        margin-left: -170px;
+        margin-left: -120px;
     }
-
-        .infos_photographe h2 {
+        .infosPhotographe h2 {
             font-size: 50px;
             color: #d3573c;
-            margin-top: 50px;
         }
-        .infos_photographe h3 {
+        .infosPhotographe h3 {
             color: #901C1C;
-            margin-top: -20px;
+            margin-top: -25px;
         }
-        .infos_photographe h4 {
+        .infosPhotographe h4 {
             color: #757575;
+            margin-top: -5px;
+
         }
-    .photo img{
+    .photograph-header img{
         height: 200px;
         width: 200px;
         border-radius: 50%;
-        margin-right: -170px;
+        margin-right: -120px;
+        margin-top: 50px;
         object-fit: cover;
     }
     .contact_button {
@@ -123,7 +129,7 @@
             font-size: 20px;
         }
     
-.bandeauPhotographer{
+.bandeau{
     display: flex;
     justify-content: space-between;
     align-items: center;

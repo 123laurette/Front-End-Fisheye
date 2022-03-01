@@ -6,11 +6,10 @@ function mediaFactory(data){
         
         //........CREATION ELEMENTS DOM DE LA PAGE DU PHOTOGRAPHE...........
         const {image, video, title, likes,date} = data;
-        const cartesMedias = document.querySelector(".cartes_medias");
-        cartesMedias.innerHTML = "";
+        
         const carteMedia = document.createElement("article");
         carteMedia.classList.add ("carte_media");
-        cartesMedias.appendChild(carteMedia);
+
         const lienMedia = document.createElement ("a");
         lienMedia.classList.add("lienPhoto");
         
@@ -41,60 +40,57 @@ function mediaFactory(data){
         carteMedia.appendChild(infoPhoto);
 
         const h2 = document.createElement( "h2" );
-        const h3 = document.createElement("h3");
+        const nbreLike = document.createElement("span");
         const coeur = document.createElement("i");
         coeur.className = "fas fa-heart";
 
         h2.textContent = title;
-        h3.textContent = likes;
+        nbreLike.textContent = likes;
 
         infoPhoto.appendChild(h2);
-        infoPhoto.appendChild(h3);
+        infoPhoto.appendChild(nbreLike);
         infoPhoto.appendChild(coeur);
 
+    //  MISE EN PLACE DE LA GESTION DES LIKES
 
+        coeur.addEventListener("click", ajoutLike);
+        function ajoutLike(){
+            nbreLike.textContent++;
 
-        //........CREATION ELEMENTS DOM DE LA LIGHTBOX...........
-        const lightbox = document.querySelector(".lightbox");
-        const close = document.querySelector(".close i") ;
-        const precedent = document.querySelector(".precedent i");
-        const suivant = document.querySelector(".suivant i");
-        const titreImage = document.querySelector(".titreImage");
-
-        close.className = "far fa-times";
-        precedent.className = "fas fa-angle-left";
-        suivant.className = "fas fa-angle-right";
-        titreImage.textContent = title;
-        return lightbox
+            let totalLikes = document.getElementsByClassName("total_likes");
+            totalLikes.innerHTML++;
         }
-
+            
+        return carteMedia;
+        
+    }
     return{getUserMediaDOM}
 
 }
 
 
+//a revoir car je n'arrive pas a récupérer les données json
 
-
+function bandeau(data){
+    //const {likes,price} = data;
     
-//Bandeau a revoir car il ne veut pas des valeurs json
-
-function bandeau(){
-const bandeauHtml = document.querySelector(".bandeau");
-
-bandeauHtml.classList = "bandeauPhotographer"
-
-const h4b = document.createElement("h4")
-const coeurb = document.createElement("i");
-const h4 = document.createElement("h4");
-
-h4b.classList = "total_likes";
-h4b.textContent = "mettre le total";
-coeurb.className = "fas fa-heart";
-h4.classList = "prix";
-h4.textContent = "prix" + "/jour";
-
-bandeauHtml.appendChild(h4b);
-bandeauHtml.appendChild(coeurb);
-bandeauHtml.appendChild(h4);
+    const bandeauHtml = document.querySelector(".bandeau");
+        
+    const like = document.createElement("h4")
+    const coeurb = document.createElement("i");
+    const prix = document.createElement("h4");
+    
+    
+    like.classList = "total_likes";
+    like.textContent = "likes";
+    coeurb.className = "fas fa-heart";
+    prix.classList = "prix";
+    prix.textContent = "price" + "/jour";
+    
+    bandeauHtml.appendChild(like);
+    bandeauHtml.appendChild(coeurb);
+    bandeauHtml.appendChild(prix);
+    return bandeauHtml;
 }
-bandeau();
+   
+    bandeau();

@@ -39,10 +39,13 @@ return{getUserCardDOM}
 //..............PAGE DU PHOTOGRAPHE...............
 function photographerFactoryInfo(data){                                 
         
-    function getUserCardDOM() {                                     
+    function getUserMediaCardDOM() {                                     
       const {portrait, name, city, country, tagline} = data;
-      const infosPhotographe = document.querySelector(".infos_photographe"); 
-
+      const section = document.createElement("section");
+      section.classList = "photographerHeader";
+      
+      const div = document.createElement("div")
+      div.classList = "infosPhotographe";
       const h2 = document.createElement( "h2" );
       const h3 = document.createElement("h3");
       const h4 = document.createElement("h4");
@@ -50,21 +53,29 @@ function photographerFactoryInfo(data){
       h2.textContent = name;
       h3.textContent = city +", "+ country;
       h4.textContent = tagline;
-    
-      infosPhotographe.appendChild(h2);
-      infosPhotographe.appendChild(h3);
-      infosPhotographe.appendChild(h4);
       
-      const photoPhotographe = document.querySelector (".photo");
+      div.appendChild(h2);
+      div.appendChild(h3);
+      div.appendChild(h4);
+
+      const button = document.createElement ("div");
+      button.innerHTML = `<button class="contact_button" onclick="displayModal()">Contactez-moi</button>`;
+
+      const photoPhotographe = document.createElement ("div")
+      photoPhotographe.classList = ("photo");
       const picture = `assets/photographers/${portrait}`;
       const img = document.createElement( "img" );
       img.setAttribute("src",picture);
       img.setAttribute("alt",name);
-      photoPhotographe.appendChild(img);
+
+      section.appendChild(div);
+      section.appendChild(button);
+      section.appendChild(img);
 
       document.getElementById("titre_modal").innerHTML = // je cible l'id concerné et le texte déjà inscrit
       document.getElementById("titre_modal").innerHTML + "<br/>" + data.name; //je récupère le texte qui est présent dans id titre modal et j'y ajoute un retour à la ligne et le nom du photographe concerné
 
+      return section;
     }
-  return{getUserCardDOM}
+  return{getUserMediaCardDOM}
 }
