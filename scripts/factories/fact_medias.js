@@ -34,7 +34,7 @@ function mediaFactory(data){
             carteMedia.appendChild(lienMedia);
             lienMedia.appendChild(img);
         }
-        
+
         const infoPhoto = document.createElement("div");
         infoPhoto.classList.add("info_photo");
         carteMedia.appendChild(infoPhoto);
@@ -52,19 +52,31 @@ function mediaFactory(data){
         infoPhoto.appendChild(coeur);
 
     //  MISE EN PLACE DE LA GESTION DES LIKES
-
+        /*let likesArray = [];
+        likesArray.pusch(media.likes);*/
         coeur.addEventListener("click", ajoutLike);
         function ajoutLike(){
             nbreLike.textContent++;
+            const addition = (previousValue, currentValue)=> previousValue + currentValue;
+            let totalMediasLikes = likesArray.reduce(addition);
 
             let totalLikes = document.getElementsByClassName("total_likes");
             totalLikes.innerHTML++;
         }
-            
+
         return carteMedia;
         
     }
-    return{getUserMediaDOM}
+    function getMediaLightboxDOM() {
+
+        const mediaLightbox = document.createElement('div');
+        mediaLightbox.classList.add ("mediaLightbox");
+        mediaLightbox.innerHTML = `<img src="assets/photographers/${image}" alt="${title}">
+        <h3>${title}</h3>`;
+
+        return mediaLightbox
+    }
+    return{getUserMediaDOM, getMediaLightboxDOM }
 
 }
 

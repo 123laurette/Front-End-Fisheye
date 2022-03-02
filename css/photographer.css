@@ -246,62 +246,88 @@
 
 
 /*...................LIGHTBOX..............*/
-/*.lightbox{
-    display: none;
-}*/
-/*.lightbox {
-    position: fixed;
-    top: 0;
-    left: 0;
-    display: flex;
-    justify-content: center;
-    width: 95%; 
-    height: 100vh;
-    background-color: #ffffff;
-    z-index: 10;
-    padding: 25px 50px;
-    transition: opacity 300ms;
+.lightbox{
+    display: block;
 }
-
 .lightbox {
     opacity: 0;
 }
-
-/*.precedent,
-.suivant {
-    border: none;
-    width: 48px;
+.lightbox {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 99%; 
     height: 100%;
-    z-index: 2;
-    text-indent: -10000px;
-    cursor: pointer;
+    background-color: #ffffff;
+    z-index: 10;
+    overflow: auto;  /*pour scroller*/
+    transition: opacity .3s;
+    border: red solid;
+}
+.lightbox.fadeOut {
+    opacity: 0;
+}
+
+.precedent,
+.suivant {
+    background : url(/assets/icons/chevron.svg) center center / 100% 100% no-repeat;
+    border: none;
+    width: 50px;
+    height: 90%;
+    position: fixed;
+    top: 0;
+    margin-top: -14px;
+    z-index: 11;
+}
+
+.suivant{
+    right: 120px;
+    transform: rotate(180deg);
+}
+.precedent {
+    right: 1500px;
 }
 
 
 .close {
+    background : url(/assets/icons/close_lightbox.svg) center center / 100% 100% no-repeat transparent; 
     border: none;
-    width: 42px;
-    height: 42px;
-    position: relative;
-    top: 0px;
-    right: 42px;
-    text-indent: -10000px;
-    z-index: 100;
+    width: 50px;
+    height: 50px;
+    position: fixed;
+    top: 50px;
+    right: 120px;
+    z-index: 12;
+}
+.lightbox button {
+    opacity: .5;
     cursor: pointer;
+    transition: opacity .3s;
+    text-indent: -10000px;
+    border: violet solid;
+
+}
+.lightbox button:hover {
+    opacity: 1;
 }
 
-.image {
+.mediaLightbox{
     display: flex;
     flex-direction: column;
-    align-content: center;
+    align-items: center;
+    justify-content: center;
+    margin-left: 50px;
+    margin-right: 50px;
+    min-height: 100%;
+    border: blue solid;
+}
+.mediaLightbox img {
+    width: auto;
+    height: 800px;
+    object-fit: cover;
+    display: flex;
+    justify-content: center;
+    align-items: center;
     
-    height: 100%;
-    padding: 0 25px;
 }
 
-.image img,
-.image video{
-    width: auto;
-    height: 90vh;
-    box-shadow: 5px 0px 1px grey;
-}*/

@@ -74,7 +74,8 @@ async function display(){
     menuSelect.onchange = function (){displayDataMedia(media)}; 
 
 }
-display ();                         
+display (); 
+
 
 
 
