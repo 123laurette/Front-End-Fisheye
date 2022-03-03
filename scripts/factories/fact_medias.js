@@ -75,7 +75,7 @@ function mediaFactory(data){
 
         const mediaLightbox = document.createElement('div');
         mediaLightbox.classList.add ("mediaLightbox");
-        mediaLightbox.innerHTML = `<img src="assets/photographers/${image}" alt="${title}">
+        mediaLightbox.innerHTML = `<img src="assets/photographers/${image}" alt="photo", " " ${title}">
         <h3>${title}</h3>`;
 
         return mediaLightbox

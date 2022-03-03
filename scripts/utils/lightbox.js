@@ -59,14 +59,19 @@ class Lightbox {
         const btnPrecedent = document.createElement("button");
         btnPrecedent.classList.add ("precedent");
         btnPrecedent.addEventListener("click", precedent);
+        btnPrecedent.setAttribute("aria-label", "image precedente");
 
         const btnSuivant = document.createElement("button");
         btnSuivant.classList.add ("suivant");
         btnSuivant.addEventListener("click", suivant);
+        btnSuivant.setAttribute("aria-label", "image suivante");
+
 
         const btnClose = document.createElement("button");
         btnClose.classList.add ("close");
         btnClose.addEventListener("click", close);
+        btnClose.setAttribute("aria-label", "fermer la lightbox");
+
 
         dom.appendChild(btnPrecedent);
         dom.appendChild(btnSuivant);
