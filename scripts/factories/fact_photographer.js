@@ -20,7 +20,9 @@ function photographerFactory(data){                                 //1ère fonc
     })  
 
     img.setAttribute("src",picture);
+    img.setAttribute("alt", "photo" +" " + name);
     h2.textContent = name;
+    h2.setAttribute("aria-label", name);
     h3.textContent = city +", "+ country;
     h4.textContent = tagline;
     p.textContent = price + "€/jour";
@@ -51,6 +53,7 @@ function photographerFactoryInfo(data){
       const h4 = document.createElement("h4");
 
       h2.textContent = name;
+      h2.setAttribute("aria-label", name);
       h3.textContent = city +", "+ country;
       h4.textContent = tagline;
       
@@ -59,14 +62,14 @@ function photographerFactoryInfo(data){
       div.appendChild(h4);
 
       const button = document.createElement ("div");
-      button.innerHTML = `<button class="contact_button" onclick="displayModal()">Contactez-moi</button>`;
+      button.innerHTML = `<button class="contact_button" aria-label = contactez-moi onclick="displayModal()">Contactez-moi</button>`;
 
       const photoPhotographe = document.createElement ("div")
       photoPhotographe.classList = ("photo");
       const picture = `assets/photographers/${portrait}`;
       const img = document.createElement( "img" );
+      img.setAttribute("alt", "photo" +" " + name);
       img.setAttribute("src",picture);
-      img.setAttribute("alt",name);
 
       section.appendChild(div);
       section.appendChild(button);

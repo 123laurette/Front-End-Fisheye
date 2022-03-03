@@ -30,7 +30,7 @@ function mediaFactory(data){
             const img = document.createElement( "img" );
             lienMedia.setAttribute("href", photo);
             img.setAttribute("src",photo);
-            img.setAttribute("alt",title);
+            img.setAttribute("alt", "photo" + " " +title);
             carteMedia.appendChild(lienMedia);
             lienMedia.appendChild(img);
         }
@@ -43,6 +43,8 @@ function mediaFactory(data){
         const nbreLike = document.createElement("span");
         const coeur = document.createElement("i");
         coeur.className = "fas fa-heart";
+        coeur.setAttribute("aria-label", "likes");
+
 
         h2.textContent = title;
         nbreLike.textContent = likes;
