@@ -77,6 +77,26 @@ async function display(){
 display (); 
 
 
+//  MISE EN PLACE DE LA GESTION DES LIKES.......NE FONCTIONNE PAS
+        /*let likesArray = [];
+        likesArray.pusch(media.likes);*/
+/*const coeur = document.querySelectorAll(".info_photo i");
+console.log (coeur)
+coeur.addEventListener("click", ajoutLike);
+
+function ajoutLike(){
+    nbreLike.textContent++;
+    const addition = (previousValue, currentValue)=> previousValue + currentValue;
+    let totalMediasLikes = likesArray.reduce(addition);
+
+    let totalLikes = document.getElementsByClassName("total_likes");
+    totalLikes.innerHTML++;
+
+    return totalMediasLikes
+}
+
+ajoutLike();*/
+
 
 
 

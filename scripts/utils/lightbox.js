@@ -1,6 +1,6 @@
 class Lightbox {
 
-    static init(medias) {//Mise en place du ciblage, de l'évenement et de la creation d'élément dans le dom
+    static init() {//Mise en place du ciblage, de l'évenement et de la creation d'élément dans le dom
 
         // Cible les liens a des photos et videos
         const links = document.getElementsByClassName("lienPhoto");

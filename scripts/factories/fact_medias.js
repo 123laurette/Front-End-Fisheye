@@ -62,6 +62,8 @@ function mediaFactory(data){
 
             let totalLikes = document.getElementsByClassName("total_likes");
             totalLikes.innerHTML++;
+
+            return totalMediasLikes
         }
 
         return carteMedia;
@@ -105,4 +107,4 @@ function bandeau(data){
     return bandeauHtml;
 }
    
-    bandeau();
+bandeau();
