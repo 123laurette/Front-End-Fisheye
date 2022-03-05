@@ -19,13 +19,18 @@ async function getPhotographers () {
 function displayData(photographers) { 
 
     const photographerHeader = document.querySelector(".photograph-header");
+    let bandeauPrix = 0;
 
     photographers.forEach(photographer=> {  //dans les données de tous les photographes, pour chaque photographe
         if (photographer.id == photographerId){  //si l'id du photographe est égal à l'id de photographerId dans json
         const photographerModel = photographerFactoryInfo(photographer); //creation de la const qui met en place la f. de create pour un photographe
         const userCardDOM = photographerModel.getUserMediaCardDOM();  //creation de la const qui regroupe la 1ère et la 2ème fonction de create pour un photographe
         photographerHeader.appendChild(userCardDOM); //MET LA FACTORIE PHOTOGRAPHER EN TANT QU'ENFANT.
+        bandeauPrix = photographer.price;// textcontent = prix du photographe
+        console.log(bandeauPrix)
     }});
+        const bandeau_prix = document.getElementById("prix");//cible le bandeau au niveau du prix
+        bandeau_prix.innerHTML = bandeauPrix + "€ / jour";//insere le prix plus le texte
 }
 
 // APPARITION DES MEDIAS DE LA PAGE DU PHOTOGRAPHE
@@ -54,16 +59,37 @@ function displayDataMedia(medias) {
     
     const cartesMedias = document.querySelector(".cartes_medias");
     cartesMedias.innerHTML = "";
-
+    let totalLikes = 0;
     medias.forEach(media=> {
         if (media.photographerId == photographerId){
-        const mediaModel = mediaFactory (media);
-        const userMediaDOM = mediaModel.getUserMediaDOM();
-        cartesMedias.appendChild(userMediaDOM);
+            const mediaModel = mediaFactory (media);
+            const userMediaDOM = mediaModel.getUserMediaDOM();
+            cartesMedias.appendChild(userMediaDOM);
+            totalLikes += media.likes;
         }
     })
-}
+    let total_likes = document.getElementById("total_likes");
+    total_likes.innerHTML= totalLikes;// textcontent = addition des likes de base du photographe
 
+}
+//  MISE EN PLACE DE LA GESTION DES LIKES
+
+function ajoutLikes(){
+    const coeurs = document.querySelectorAll(".coeur");// je cible le span des coeurs
+    console.log (coeurs);
+    coeurs.forEach(e => {
+
+        e.addEventListener("click", function(){// au click sur l'element
+
+            const nbreLike = e.parentElement.children[1];//creation constante qui cible le nbre de like
+            console.log (nbreLike);
+    
+            nbreLike.textContent++;// j'aoute 1 au nbre de like
+            let totalLikes = document.getElementById("total_likes");// je cible le total des likes dans le bandeau
+            totalLikes.innerHTML++; // j'ajoute 1 a ce total
+        });
+    });
+}
 
 
 //  ACTIVE LES FONCTIONS PRECEDENTES (PHOTOGRAPHE ET MEDIAS)
@@ -71,31 +97,14 @@ async function display(){
     const {photographers, media} = await getPhotographers();  //créat de la const qui doit récupérer les données json  via la f. fetch
     displayData(photographers); 
     displayDataMedia(media);
-    menuSelect.onchange = function (){displayDataMedia(media)}; 
-
+    menuSelect.onchange = function (){displayDataMedia(media)};
+    ajoutLikes();
 }
 display (); 
 
 
-//  MISE EN PLACE DE LA GESTION DES LIKES.......NE FONCTIONNE PAS
-        /*let likesArray = [];
-        likesArray.pusch(media.likes);*/
-/*const coeur = document.querySelectorAll(".info_photo i");
-console.log (coeur)
-coeur.addEventListener("click", ajoutLike);
 
-function ajoutLike(){
-    nbreLike.textContent++;
-    const addition = (previousValue, currentValue)=> previousValue + currentValue;
-    let totalMediasLikes = likesArray.reduce(addition);
 
-    let totalLikes = document.getElementsByClassName("total_likes");
-    totalLikes.innerHTML++;
-
-    return totalMediasLikes
-}
-
-ajoutLike();*/
 
 
 

@@ -11,7 +11,7 @@ function mediaFactory(data){
         carteMedia.classList.add ("carte_media");
 
         const lienMedia = document.createElement ("a");
-        lienMedia.classList.add("lienPhoto");
+        lienMedia.id ="lienPhoto";
         
         if("video" in data){
             const photoVideo = document.createElement("video");
@@ -41,6 +41,8 @@ function mediaFactory(data){
 
         const h2 = document.createElement( "h2" );
         const nbreLike = document.createElement("span");
+        const spanCoeur = document.createElement("span");
+        spanCoeur.className = "coeur";
         const coeur = document.createElement("i");
         coeur.className = "fas fa-heart";
         coeur.setAttribute("aria-label", "likes");
@@ -51,27 +53,14 @@ function mediaFactory(data){
 
         infoPhoto.appendChild(h2);
         infoPhoto.appendChild(nbreLike);
-        infoPhoto.appendChild(coeur);
+        spanCoeur.appendChild(coeur);
+        infoPhoto.appendChild(spanCoeur);
 
-    //  MISE EN PLACE DE LA GESTION DES LIKES
-        /*let likesArray = [];
-        likesArray.pusch(media.likes);*/
-        coeur.addEventListener("click", ajoutLike);
-        function ajoutLike(){
-            nbreLike.textContent++;
-            const addition = (previousValue, currentValue)=> previousValue + currentValue;
-            let totalMediasLikes = likesArray.reduce(addition);
-
-            let totalLikes = document.getElementsByClassName("total_likes");
-            totalLikes.innerHTML++;
-
-            return totalMediasLikes
-        }
-
+        
         return carteMedia;
         
     }
-    function getMediaLightboxDOM() {
+    /*function getMediaLightboxDOM() {
 
         const mediaLightbox = document.createElement('div');
         mediaLightbox.classList.add ("mediaLightbox");
@@ -79,16 +68,13 @@ function mediaFactory(data){
         <h3>${title}</h3>`;
 
         return mediaLightbox
-    }
-    return{getUserMediaDOM, getMediaLightboxDOM }
+    }*/
+    return{getUserMediaDOM}
 
 }
 
 
-//a revoir car je n'arrive pas a récupérer les données json
-
-function bandeau(data){
-    //const {likes,price} = data;
+function bandeau(){
     
     const bandeauHtml = document.querySelector(".bandeau");
         
@@ -96,17 +82,14 @@ function bandeau(data){
     const coeurb = document.createElement("i");
     const prix = document.createElement("h4");
     
-    
-    like.classList = "total_likes";
-    like.textContent = "likes";
+    like.id = "total_likes";
     coeurb.className = "fas fa-heart";
-    prix.classList = "prix";
-    prix.textContent = "price" + "/jour";
+    prix.id = "prix";
     
     bandeauHtml.appendChild(like);
     bandeauHtml.appendChild(coeurb);
     bandeauHtml.appendChild(prix);
     return bandeauHtml;
 }
-   
+    
 bandeau();
