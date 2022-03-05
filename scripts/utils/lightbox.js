@@ -1,4 +1,4 @@
-function openModal() {
+/*function openModal() {
     document.getElementById("myModal").style.display = "block";
   }
     
@@ -27,4 +27,4 @@ function openModal() {
     }
     
     slides[slideIndex-1].style.display = "block";
-    }
+    }*/
