@@ -11,27 +11,36 @@ function mediaFactory(data){
         carteMedia.classList.add ("carte_media");
 
         const lienMedia = document.createElement ("a");
-        lienMedia.id ="lienPhoto";
+        lienMedia.classList ="lienPhoto";
         
         if("video" in data){
             const photoVideo = document.createElement("video");
             const mp4 = `assets/photographers/${video}`;
             const source = document.createElement("source");
+            const BlocPhoto = document.createElement("div");
+            BlocPhoto.classList = "blocPhoto";
+
             lienMedia.setAttribute("href", mp4);
             source.setAttribute("src",mp4);
             source.setAttribute("alt", title);
             source.setAttribute("type", "video/mp4");
-            carteMedia.appendChild(lienMedia);
+            carteMedia.appendChild(BlocPhoto);
+            BlocPhoto.appendChild(lienMedia)
             lienMedia.appendChild(photoVideo);
             photoVideo.appendChild(source);
         }
         else {
             const photo = `assets/photographers/${image}`;
             const img = document.createElement( "img" );
+            const BlocPhoto = document.createElement("div");
+
+            BlocPhoto.classList = "blocPhoto";
             lienMedia.setAttribute("href", photo);
             img.setAttribute("src",photo);
             img.setAttribute("alt", "photo" + " " +title);
-            carteMedia.appendChild(lienMedia);
+            
+            carteMedia.appendChild(BlocPhoto);
+            BlocPhoto.appendChild(lienMedia);
             lienMedia.appendChild(img);
         }
 

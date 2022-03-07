@@ -263,136 +263,88 @@
 
 
 /*...................LIGHTBOX..............*/
-/*body {
-    font-family: Verdana, sans-serif;
-    margin: 0;
-  }
-  
-  * {
-    box-sizing: border-box;
-  }
-  
-  .row > .column {
-    padding: 0 8px;
-  }
-  
-  .row:after {
-    content: "";
-    display: table;
-    clear: both;
-  }
-  
-  .column {
-    float: left;
-    width: 25%;
-  }
-  
-  .modal {
-    display: none;
+.lightbox{
+    display: block;
+}
+.lightbox {
+    opacity: 0;
+}
+.lightbox {
     position: fixed;
-    z-index: 1;
-    padding-top: 100px;
+    top: 0;
     left: 0;
-    top: 0;
-    width: 100%;
+    width: 99%; 
     height: 100%;
-    overflow: auto;
-    background-color: black;
-  }
-  
-  .modal-content {
-    position: relative;
-    background-color: #fefefe;
-    margin: auto;
-    padding: 0;
-    width: 90%;
-    max-width: 1200px;
-  }
-  
-  .close {
-    color: white;
-    position: absolute;
-    top: 10px;
-    right: 25px;
-    font-size: 35px;
-    font-weight: bold;
-  }
-  
-  .close:hover,
-  .close:focus {
-    color: #999;
-    text-decoration: none;
-    cursor: pointer;
-  }
-  
-  .mySlides {
-    display: none;
-  }
-  
-  .cursor {
-    cursor: pointer;
-  }
-  
-  .prev,
-  .next {
-    cursor: pointer;
-    position: absolute;
-    top: 50%;
-    width: auto;
-    padding: 16px;
-    margin-top: -50px;
-    color: white;
-    font-weight: bold;
-    font-size: 20px;
-    transition: 0.6s ease;
-    border-radius: 0 3px 3px 0;
-    user-select: none;
-    -webkit-user-select: none;
-  }
-  
-  .next {
-    right: 0;
-    border-radius: 3px 0 0 3px;
-  }
-  
-  .prev:hover,
-  .next:hover {
-    background-color: rgba(0, 0, 0, 0.8);
-  }
-  
-  .numbertext {
-    color: #f2f2f2;
-    font-size: 12px;
-    padding: 8px 12px;
-    position: absolute;
+    background-color: #ffffff;
+    z-index: 10;
+    overflow: auto;  /*pour scroller*/
+    transition: opacity .3s;
+    border: red solid;
+}
+.lightbox.fadeOut {
+    opacity: 0;
+}
+
+.precedent,
+.suivant {
+    background : url(/assets/icons/chevron.svg) center center / 100% 100% no-repeat;
+    border: none;
+    width: 50px;
+    height: 90%;
+    position: fixed;
     top: 0;
-  }
-  
-  img {
-    margin-bottom: -4px;
-  }
-  
-  .caption-container {
-    text-align: center;
-    background-color: black;
-    padding: 2px 16px;
-    color: white;
-  }
-  
-  .demo {
-    opacity: 0.6;
-  }
-  
-  .active,
-  .demo:hover {
+    margin-top: -14px;
+    z-index: 11;
+}
+
+.suivant{
+    right: 120px;
+    transform: rotate(180deg);
+}
+.precedent {
+    right: 1500px;
+}
+
+
+.close {
+    background : url(/assets/icons/close_lightbox.svg) center center / 100% 100% no-repeat transparent; 
+    border: none;
+    width: 50px;
+    height: 50px;
+    position: fixed;
+    top: 50px;
+    right: 120px;
+    z-index: 12;
+}
+.lightbox button {
+    opacity: .5;
+    cursor: pointer;
+    transition: opacity .3s;
+    text-indent: -10000px;
+    border: violet solid;
+
+}
+.lightbox button:hover {
     opacity: 1;
-  }
-  
-  img.hover-shadow {
-    transition: 0.3s;
-  }
-  
-  .hover-shadow:hover {
-    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
-  }*/
-  
+}
+
+.mediaLightbox{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    margin-left: 50px;
+    margin-right: 50px;
+    min-height: 100%;
+    border: blue solid;
+}
+.mediaLightbox img {
+    width: auto;
+    height: 800px;
+    object-fit: cover;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    
+}
+
