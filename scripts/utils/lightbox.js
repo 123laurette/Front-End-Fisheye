@@ -3,7 +3,9 @@ async function getPhotographers () {
     const data = await response.json();   // recup des données du json
     return data;                           //  retourne les données json
 }
-function creatDomLightbox () {  //CREATION DES BOUTONS LIGHTBOX
+
+//CREATION DES BOUTONS LIGHTBOX
+function creatDomLightbox () {  
 
     const lightbox = document.createElement("div");
     lightbox.className = "lightbox";
@@ -11,14 +13,18 @@ function creatDomLightbox () {  //CREATION DES BOUTONS LIGHTBOX
     const btnPrecedent = document.createElement("button");
     btnPrecedent.className = "precedent";
     btnPrecedent.setAttribute("aria-label", "image précédente");
+    btnPrecedent.style.background = "url(/assets/icons/chevron.svg) center center / 100% 100% no-repeat";
 
     const btnSuivant = document.createElement("button");
     btnSuivant.className = "suivant";
     btnSuivant.setAttribute("aria-label", "image suivante");
+    btnSuivant.style.background = "url(/assets/icons/chevron.svg) center center / 100% 100% no-repeat";
+
 
     const btnClose = document.createElement("button");
     btnClose.className = "close";
     btnClose.setAttribute("aria-label", "fermer la lightbox");
+    btnClose.style.background = "url(/assets/icons/close_lightbox.svg) center center / 100% 100% no-repeat transparent";
 
     lightbox.appendChild(btnPrecedent);
     lightbox.appendChild(btnSuivant);
@@ -27,7 +33,9 @@ function creatDomLightbox () {  //CREATION DES BOUTONS LIGHTBOX
     document.body.appendChild(lightbox);
 
 }
-function getMediaLightboxDOM(data) {    //CREATION DE IMAGE ET TITRE LIGHTBOX
+
+//CREATION DE IMAGE ET TITRE LIGHTBOX
+function getMediaLightboxDOM(data) {    
     const {image, video, title} = data
     const lightbox = document.querySelector(".lightbox");
     const mediaLightboxDiv = document.createElement('div');
@@ -63,22 +71,21 @@ function getMediaLightboxDOM(data) {    //CREATION DE IMAGE ET TITRE LIGHTBOX
 
 }
 
-function Lightbox(){   // EVENEMENT AU CLICK SUR LA PHOTO
+
+async function displayLightbox() { 
     const liensPhoto = document.getElementsByClassName("lienPhoto");
     console.log(liensPhoto);
+
     for(let i = 0; i > liensPhoto.length; i++){
-        addEventListener('click', e => {
+        addEventListener('click', e => {    // EVENEMENT AU CLICK SUR LA PHOTO
             e.preventDefault()
         })
     }
-}
-
-
-async function displayLightbox() {  //MISE EN PLACE DES FONCTIONS LIGHTBOX
-    const {media} = await getPhotographers();  
+     //MISE EN PLACE DES FONCTIONS LIGHTBOX
+    const {media} = await getPhotographers();
+    console.log(media)  ;
     creatDomLightbox();
     getMediaLightboxDOM(media);
-    Lightbox();
 }
 
 displayLightbox();

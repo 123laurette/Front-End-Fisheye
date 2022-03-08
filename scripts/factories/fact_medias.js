@@ -18,7 +18,7 @@ function mediaFactory(data){
             const source = document.createElement("source");
             
 
-            lienMedia.setAttribute("href", "displayLightbox()");
+            lienMedia.setAttribute("href", mp4);
             source.setAttribute("src",mp4);
             source.setAttribute("alt", title);
             source.setAttribute("type", "video/mp4");
@@ -31,7 +31,7 @@ function mediaFactory(data){
             const photo = `assets/photographers/${image}`;
 
             
-            lienMedia.setAttribute("href", "displayLightbox()");
+            lienMedia.setAttribute("href", photo);
             img.setAttribute("src",photo);
             img.setAttribute("alt", "photo" + " " +title);
 
