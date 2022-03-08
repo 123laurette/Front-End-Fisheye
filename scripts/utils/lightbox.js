@@ -24,7 +24,7 @@ function creatDomLightbox () {
     const btnClose = document.createElement("button");
     btnClose.className = "close";
     btnClose.setAttribute("aria-label", "fermer la lightbox");
-    btnClose.style.background = "url(/assets/icons/close_lightbox.svg)     background : center center / 100% 100% no-repeat transparent";
+    btnClose.style.background = "url(/assets/icons/close_lightbox.svg)  center center / 100% 100% no-repeat transparent";
 
     lightbox.appendChild(btnPrecedent);
     lightbox.appendChild(btnSuivant);
@@ -76,7 +76,7 @@ async function displayLightbox() {
     const liensPhoto = document.getElementsByClassName("lienPhoto");
     console.log(liensPhoto);
 
-    for(let i = 0; i > liensPhoto.length; i++){
+    for(let i = 0; i < liensPhoto.length; i++){
         liensPhoto.addEventListener('click', e => {    // EVENEMENT AU CLICK SUR LA PHOTO
             e.preventDefault()
         })
