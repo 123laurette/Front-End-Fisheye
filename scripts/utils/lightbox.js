@@ -1,112 +1,88 @@
-class Lightbox {
+async function getPhotographers () {                                  
+    const response = await fetch ("data/photographers.json");  //appel du json
+    const data = await response.json();   // recup des données du json
+    return data;                           //  retourne les données json
+}
+function creatDomLightbox () {  //CREATION DES BOUTONS LIGHTBOX
 
-    static init() {//Mise en place du ciblage, de l'évenement et de la creation d'élément dans le dom
+    const lightbox = document.createElement("div");
+    lightbox.className = "lightbox";
 
-        // Cible les liens a des photos et videos
-        const links = document.querySelectorAll(".blocPhoto");
-        console.log(links);
+    const btnPrecedent = document.createElement("button");
+    btnPrecedent.className = "precedent";
+    btnPrecedent.setAttribute("aria-label", "image précédente");
+
+    const btnSuivant = document.createElement("button");
+    btnSuivant.className = "suivant";
+    btnSuivant.setAttribute("aria-label", "image suivante");
+
+    const btnClose = document.createElement("button");
+    btnClose.className = "close";
+    btnClose.setAttribute("aria-label", "fermer la lightbox");
+
+    lightbox.appendChild(btnPrecedent);
+    lightbox.appendChild(btnSuivant);
+    lightbox.appendChild(btnClose);
+
+    document.body.appendChild(lightbox);
+
+}
+function getMediaLightboxDOM(data) {    //CREATION DE IMAGE ET TITRE LIGHTBOX
+    const {image, video, title} = data
+    const lightbox = document.querySelector(".lightbox");
+    const mediaLightboxDiv = document.createElement('div');
+    mediaLightboxDiv.id = "lightbox_media";
+
+    const lienMedia = document.createElement ("a");
         
-        links.forEach(e =>   //dans tous les liens, pour chaque lien
-            e.addEventListener("click", function (){   //creation d'un évent click sur l'element
-
-                e.preventDefault();  // stop comportement par défaut du lien
-
-                // Affiche une Lightbox
-                new Lightbox(e.currentTarget.getAttribute("href"));
-            })
-        )
-    }
-
-
-    constructor (media) {   // indique a quel endroit doit se mettre le buildDom
+    if("video" in data){
+        const photoVideo = document.createElement("video");
+        const mp4 = `assets/photographers/${video}`;
+        const source = document.createElement("source");
         
-        const lightboxElement = this.buildDOM(media)
-        const corp = document.querySelector("corp_lightbox");
-        corp.appendChild(lightboxElement)
+        lienMedia.setAttribute("href", mp4);
+        source.setAttribute("src",mp4);
+        source.setAttribute("alt", title);
+        source.setAttribute("type", "video/mp4");
+        lienMedia.appendChild(photoVideo);
+        photoVideo.appendChild(source);
     }
+    else {
+        const img = document.createElement( "img" );
+        const photo = `assets/photographers/${image}`;
 
-
-    precedent(e) {
-        e.preventDefault()
-        let i = this.images.findIndex(image => image === this.url);
-        if (i === 0) {
-        i = this.images.lenght - 1;
-        }
-        this.loadImage(this.images[i - 1]);
+        lienMedia.setAttribute("href", photo);
+        img.setAttribute("src",photo);
+        img.setAttribute("alt", "photo" + " " +title);
+        lienMedia.appendChild(img);
     }
-    suivant(e) {
-        e.preventDefault()
-        let i = this.images.findIndex(image => image === this.url);
-        if (i === this.images.length - 1) {
-        i = -1;
-        }
-        this.loadImage(this.images[i + 1]);
-    }
-    close (e){
-        e.preventDefault() 
-        this.element.classList.add("fadeOut")
-        window.setTimeout(()=> {
-            this.element.parentElement.removeChild(this.element)
-        }, 500)
-        document.removeEventListener("keyup", this.onKeyup)
-    }
+    lienMedia.className ="lienPhoto";
 
-    // Construit la lightbox
-    buildDOM () {
-        const dom = document.createElement("div");
-        dom.classList.add("lightbox");
+    mediaLightboxDiv.appendChild(lienMedia);
+    lightbox.appendChild(mediaLightboxDiv);
 
-        const btnPrecedent = document.createElement("button");
-        btnPrecedent.classList.add ("precedent");
-        btnPrecedent.addEventListener("click", precedent);
-        btnPrecedent.setAttribute("aria-label", "image precedente");
+}
 
-        const btnSuivant = document.createElement("button");
-        btnSuivant.classList.add ("suivant");
-        btnSuivant.addEventListener("click", suivant);
-        btnSuivant.setAttribute("aria-label", "image suivante");
-
-
-        const btnClose = document.createElement("button");
-        btnClose.classList.add ("close");
-        btnClose.addEventListener("click", close);
-        btnClose.setAttribute("aria-label", "fermer la lightbox");
-
-
-        dom.appendChild(btnPrecedent);
-        dom.appendChild(btnSuivant);
-        dom.appendChild(btnClose);
-
-        document.addEventListener("keyup", onKeyup)//ecouteur evenement au clavier
-
-        return dom
-    }
-
-    onKeyup (e){
-        if (e.key === "escape") {
-            this.close(e);
-        }else if (e.key === "precedent") {
-            this.precedent(e);
-        }else if (e.key === "suivant") {
-            this.suivant(e);
-        }
+function Lightbox(){   // EVENEMENT AU CLICK SUR LA PHOTO
+    const liensPhoto = document.getElementsByClassName("lienPhoto");
+    console.log(liensPhoto);
+    for(let i = 0; i > liensPhoto.length; i++){
+        addEventListener('click', e => {
+            e.preventDefault()
+        })
     }
 }
-    Lightbox.init()
-    
-    
 
 
-//..CETTE FONCTION A ETE MISE DANS FACT_MEDIAS.JS.....
-//.. CREATION DU CONTENU DES IMAGES ET DU TITRE POUR RECUPERE LE JSON
+async function displayLightbox() {  //MISE EN PLACE DES FONCTIONS LIGHTBOX
+    const {media} = await getPhotographers();  
+    creatDomLightbox();
+    getMediaLightboxDOM(media);
+    Lightbox();
+}
 
-    /*function getMediaLightboxDOM() {
-        
-        const mediaLightbox = document.createElement('div');
-        mediaLightbox.classList.add ("mediaLightbox");
-        mediaLightbox.innerHTML = `<img src="assets/photographers/${image}" alt="${title}">
-        <h3>${title}</h3>`;
+displayLightbox();
 
-        return mediaLightbox
-    }
-    return{getUserMediaDOM, getMediaLightboxDOM }*/
+
+
+

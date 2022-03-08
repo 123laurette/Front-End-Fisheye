@@ -5,44 +5,40 @@ function mediaFactory(data){
     function getUserMediaDOM() {  
         
         //........CREATION ELEMENTS DOM DE LA PAGE DU PHOTOGRAPHE...........
-        const {image, video, title, likes,date} = data;
+        const {image, video, title, likes,date,id} = data;
         
         const carteMedia = document.createElement("article");
         carteMedia.classList.add ("carte_media");
 
         const lienMedia = document.createElement ("a");
-        lienMedia.classList ="lienPhoto";
         
         if("video" in data){
             const photoVideo = document.createElement("video");
             const mp4 = `assets/photographers/${video}`;
             const source = document.createElement("source");
-            const BlocPhoto = document.createElement("div");
-            BlocPhoto.classList = "blocPhoto";
+            
 
-            lienMedia.setAttribute("href", mp4);
+            lienMedia.setAttribute("href", "displayLightbox()");
             source.setAttribute("src",mp4);
             source.setAttribute("alt", title);
             source.setAttribute("type", "video/mp4");
-            carteMedia.appendChild(BlocPhoto);
-            BlocPhoto.appendChild(lienMedia)
+            carteMedia.appendChild(lienMedia);
             lienMedia.appendChild(photoVideo);
             photoVideo.appendChild(source);
         }
         else {
-            const photo = `assets/photographers/${image}`;
             const img = document.createElement( "img" );
-            const BlocPhoto = document.createElement("div");
+            const photo = `assets/photographers/${image}`;
 
-            BlocPhoto.classList = "blocPhoto";
-            lienMedia.setAttribute("href", photo);
+            
+            lienMedia.setAttribute("href", "displayLightbox()");
             img.setAttribute("src",photo);
             img.setAttribute("alt", "photo" + " " +title);
-            
-            carteMedia.appendChild(BlocPhoto);
-            BlocPhoto.appendChild(lienMedia);
+
+            carteMedia.appendChild(lienMedia);
             lienMedia.appendChild(img);
         }
+        lienMedia.className ="lienPhoto";
 
         const infoPhoto = document.createElement("div");
         infoPhoto.classList.add("info_photo");
@@ -56,7 +52,6 @@ function mediaFactory(data){
         coeur.className = "fas fa-heart";
         coeur.setAttribute("aria-label", "likes");
 
-
         h2.textContent = title;
         nbreLike.textContent = likes;
 
@@ -64,20 +59,10 @@ function mediaFactory(data){
         infoPhoto.appendChild(nbreLike);
         spanCoeur.appendChild(coeur);
         infoPhoto.appendChild(spanCoeur);
-
+ 
         
         return carteMedia;
-        
     }
-    /*function getMediaLightboxDOM() {
-
-        const mediaLightbox = document.createElement('div');
-        mediaLightbox.classList.add ("mediaLightbox");
-        mediaLightbox.innerHTML = `<img src="assets/photographers/${image}" alt="photo", " " ${title}">
-        <h3>${title}</h3>`;
-
-        return mediaLightbox
-    }*/
     return{getUserMediaDOM}
 
 }

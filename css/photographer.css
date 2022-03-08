@@ -138,6 +138,7 @@
         .info_photo i{
             color: #901C1C;
             font-size: 20px;
+            cursor: pointer;
         }
 /*...........Page du photographe, bandeau du bas.............*/    
 .bandeau{
@@ -262,13 +263,11 @@
 
 
 
-/*...................LIGHTBOX..............*/
-.lightbox{
-    display: block;
-}
+/*...................LIGHTBOX..............
 .lightbox {
-    opacity: 0;
+    display: none;
 }
+
 .lightbox {
     position: fixed;
     top: 0;
@@ -277,13 +276,12 @@
     height: 100%;
     background-color: #ffffff;
     z-index: 10;
-    overflow: auto;  /*pour scroller*/
     transition: opacity .3s;
     border: red solid;
 }
 .lightbox.fadeOut {
     opacity: 0;
-}
+}*/
 
 .precedent,
 .suivant {
@@ -328,7 +326,7 @@
     opacity: 1;
 }
 
-.mediaLightbox{
+/*.mediaLightbox{
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -346,5 +344,5 @@
     justify-content: center;
     align-items: center;
     
-}
+}*/
 
