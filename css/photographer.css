@@ -304,6 +304,7 @@
 
 
 .close {
+    background : center center / 100% 100% no-repeat transparent; 
     border: none;
     width: 50px;
     height: 50px;
