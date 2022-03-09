@@ -17,11 +17,11 @@ function mediaFactory(data){
             const mp4 = `assets/photographers/${video}`;
             const source = document.createElement("source");
             
-
             lienMedia.setAttribute("href", mp4);
             source.setAttribute("src",mp4);
             source.setAttribute("alt", title);
             source.setAttribute("type", "video/mp4");
+
             carteMedia.appendChild(lienMedia);
             lienMedia.appendChild(photoVideo);
             photoVideo.appendChild(source);
@@ -30,7 +30,6 @@ function mediaFactory(data){
             const img = document.createElement( "img" );
             const photo = `assets/photographers/${image}`;
 
-            
             lienMedia.setAttribute("href", photo);
             img.setAttribute("src",photo);
             img.setAttribute("alt", "photo" + " " +title);
@@ -59,7 +58,35 @@ function mediaFactory(data){
         infoPhoto.appendChild(nbreLike);
         spanCoeur.appendChild(coeur);
         infoPhoto.appendChild(spanCoeur);
- 
+
+        // CREATION IMAGE ET TITRE LIGHTBOX
+        const lightbox = document.querySelector(".lightbox");
+        const mediaLightbox = document.createElement('div');
+        mediaLightbox.className = "lightbox_media";
+
+        if("video" in data){
+            const photoVideo = document.createElement("video");
+            const source = document.createElement("source");
+            const mp4 = `assets/photographers/${video}`;
+            source.setAttribute("src",mp4);
+            source.setAttribute("alt", "vidéo" + " " + title);
+            source.setAttribute("type", "video/mp4");
+            mediaLightbox.appendChild(photoVideo);
+            photoVideo.appendChild(source);
+        }      
+        else {
+            const img = document.createElement("img");
+            const photo = `assets/photographers/${image}`;
+            img.setAttribute("src",photo);
+            img.setAttribute("alt", "photo" + " " + title);
+            mediaLightbox.appendChild(img);
+        }   
+        lightbox.appendChild(mediaLightbox);
+
+        const titrePhotoLightbox = document.createElement("h3");
+        titrePhotoLightbox.className ="titreLightbox";
+        titrePhotoLightbox.textContent = title;
+        mediaLightbox.appendChild(titrePhotoLightbox);
         
         return carteMedia;
     }

@@ -1,11 +1,5 @@
-async function getPhotographers () {                                  
-    const response = await fetch ("data/photographers.json");  //appel du json
-    const data = await response.json();   // recup des données du json
-    return data;                           //  retourne les données json
-}
-
-//CREATION DES BOUTONS LIGHTBOX
-function creatDomLightbox () {  
+//CREATION ET ACTION DES BOUTONS LIGHTBOX
+function creatIconeDomLightbox () {  
 
     const lightbox = document.createElement("div");
     lightbox.className = "lightbox";
@@ -13,18 +7,23 @@ function creatDomLightbox () {
     const btnPrecedent = document.createElement("button");
     btnPrecedent.className = "precedent";
     btnPrecedent.setAttribute("aria-label", "image précédente");
-    btnPrecedent.style.background = "url(/assets/icons/chevron.svg) center center / 100% 100% no-repeat";
-
+    btnPrecedent.addEventListener("click", () => {
+        precedent();
+    });
+    
     const btnSuivant = document.createElement("button");
     btnSuivant.className = "suivant";
     btnSuivant.setAttribute("aria-label", "image suivante");
-    btnSuivant.style.background = "url(/assets/icons/chevron.svg) center center / 100% 100% no-repeat";
-
+    btnSuivant.addEventListener("click", () => {
+        suivant();
+    });
 
     const btnClose = document.createElement("button");
     btnClose.className = "close";
     btnClose.setAttribute("aria-label", "fermer la lightbox");
-    btnClose.style.background = "url(/assets/icons/close_lightbox.svg)  center center / 100% 100% no-repeat transparent";
+    btnClose.addEventListener("click", () => {
+        close();
+    });
 
     lightbox.appendChild(btnPrecedent);
     lightbox.appendChild(btnSuivant);
@@ -34,62 +33,51 @@ function creatDomLightbox () {
 
 }
 
-//CREATION DE IMAGE ET TITRE LIGHTBOX
-function getMediaLightboxDOM(data) {    
-    const {image, video, title} = data
-    const lightbox = document.querySelector(".lightbox");
-    const mediaLightboxDiv = document.createElement('div');
-    mediaLightboxDiv.id = "lightbox_media";
 
-    const lienMedia = document.createElement ("a");
-        
-    if("video" in data){
-        const photoVideo = document.createElement("video");
-        const mp4 = `assets/photographers/${video}`;
-        const source = document.createElement("source");
-        
-        lienMedia.setAttribute("href", mp4);
-        source.setAttribute("src",mp4);
-        source.setAttribute("alt", title);
-        source.setAttribute("type", "video/mp4");
-        lienMedia.appendChild(photoVideo);
-        photoVideo.appendChild(source);
-    }
-    else {
-        const img = document.createElement( "img" );
-        const photo = `assets/photographers/${image}`;
-
-        lienMedia.setAttribute("href", photo);
-        img.setAttribute("src",photo);
-        img.setAttribute("alt", "photo" + " " +title);
-        lienMedia.appendChild(img);
-    }
-    lienMedia.className ="lienPhoto";
-
-    mediaLightboxDiv.appendChild(lienMedia);
-    lightbox.appendChild(mediaLightboxDiv);
-
-}
-
-
-async function displayLightbox() { 
-    const liensPhoto = document.getElementsByClassName("lienPhoto");
+const liensPhoto = document.getElementsByClassName("lienPhoto");
     console.log(liensPhoto);
 
-    for(let i = 0; i < liensPhoto.length; i++){
-        liensPhoto.addEventListener('click', e => {    // EVENEMENT AU CLICK SUR LA PHOTO
+
+
+function EventdisplayLightbox() { 
+    
+    for(let i = 0; i < liensPhoto.length; i++) {
+        
+        // EVENEMENT AU CLICK SUR LA PHOTO
+        liensPhoto.removeEventListener('click', e => {    
             e.preventDefault()
+        });
+
+        liensPhoto.addEventListener("click", e => {
+            e.preventDefault();
+            const newLightbox = "";
+            newLightbox = (e.currentTarget.getAttribute("href"));
         })
-    }
-     //MISE EN PLACE DES FONCTIONS LIGHTBOX
-    const {media} = await getPhotographers();
-    console.log(media)  ;
-    creatDomLightbox();
-    getMediaLightboxDOM(media);
+    };
+    
+}
+//FONCTION POUR LES ICONES
+
+function precedent(){
+    let i = this.liensPhoto;
+    i = liensPhoto.length - 1;
+}
+
+function suivant(){
+    let i = this.liensPhoto;
+    i = liensPhoto.length + 1;
+}
+
+function close(){
+    const fermeLightbox = document.querySelector(".lightbox");
+    fermeLightbox.style.display = "none";
+}
+
+async function displayLightbox() { 
+ //MISE EN PLACE DES FONCTIONS LIGHTBOX
+EventdisplayLightbox();
+creatIconeDomLightbox();
 }
 
 displayLightbox();
-
-
-
 
