@@ -336,7 +336,8 @@
     min-height: 100%;
     border: blue solid;
 }
-.lightbox_media img, video {
+.lightbox_media img,
+.lightbox_media a {
     width: 70%;
     height: 800px;
     object-fit: cover;

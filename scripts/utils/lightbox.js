@@ -1,3 +1,44 @@
+const liensPhoto = document.getElementsByClassName("lienPhoto");
+    console.log(liensPhoto);
+
+// EVENEMENT AU CLICK SUR LA PHOTO
+
+function EventdisplayLightbox() { 
+    
+    for(let i = 0; i < liensPhoto.length; i++) {
+        
+        liensPhoto.removeEventListener('click', e => {    
+            e.preventDefault()
+        });
+
+        liensPhoto.addEventListener("click", e => {
+            e.preventDefault();
+            const newLightbox = "";
+            newLightbox = (e.currentTarget.getAttribute("href"));
+        })
+    };
+    
+}
+
+
+//FONCTION POUR LES ICONES
+
+function precedent(){
+    let i = this.liensPhoto;
+    i = liensPhoto.length - 1;
+}
+
+function suivant(){
+    let i = this.liensPhoto;
+    i = liensPhoto.length + 1;
+}
+
+function close(){
+    const fermeLightbox = document.querySelector(".lightbox");
+    fermeLightbox.style.display = "none";
+}
+
+
 //CREATION ET ACTION DES BOUTONS LIGHTBOX
 function creatIconeDomLightbox () {  
 
@@ -34,46 +75,9 @@ function creatIconeDomLightbox () {
 }
 
 
-const liensPhoto = document.getElementsByClassName("lienPhoto");
-    console.log(liensPhoto);
 
 
-
-function EventdisplayLightbox() { 
-    
-    for(let i = 0; i < liensPhoto.length; i++) {
-        
-        // EVENEMENT AU CLICK SUR LA PHOTO
-        liensPhoto.removeEventListener('click', e => {    
-            e.preventDefault()
-        });
-
-        liensPhoto.addEventListener("click", e => {
-            e.preventDefault();
-            const newLightbox = "";
-            newLightbox = (e.currentTarget.getAttribute("href"));
-        })
-    };
-    
-}
-//FONCTION POUR LES ICONES
-
-function precedent(){
-    let i = this.liensPhoto;
-    i = liensPhoto.length - 1;
-}
-
-function suivant(){
-    let i = this.liensPhoto;
-    i = liensPhoto.length + 1;
-}
-
-function close(){
-    const fermeLightbox = document.querySelector(".lightbox");
-    fermeLightbox.style.display = "none";
-}
-
-async function displayLightbox() { 
+function displayLightbox() { 
  //MISE EN PLACE DES FONCTIONS LIGHTBOX
 EventdisplayLightbox();
 creatIconeDomLightbox();
