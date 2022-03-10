@@ -1,26 +1,6 @@
 const liensPhoto = document.getElementsByClassName("lienPhoto");
     console.log(liensPhoto);
 
-// EVENEMENT AU CLICK SUR LA PHOTO
-
-function EventdisplayLightbox() { 
-    
-    for(let i = 0; i < liensPhoto.length; i++) {
-        
-        liensPhoto.removeEventListener('click', e => {    
-            e.preventDefault()
-        });
-
-        liensPhoto.addEventListener("click", e => {
-            e.preventDefault();
-            const newLightbox = "";
-            newLightbox = (e.currentTarget.getAttribute("href"));
-        })
-    };
-    
-}
-
-
 //FONCTION POUR LES ICONES
 
 function precedent(){
@@ -74,12 +54,26 @@ function creatIconeDomLightbox () {
 
 }
 
+// EVENEMENT AU CLICK SUR LA PHOTO
 
+/*function EventdisplayLightbox() { 
+    
+    for(let i = 0; i < liensPhoto.length; i++) {
+
+        liensPhoto.addEventListener("click", e => {
+            e.preventDefault();
+            
+            const newLightbox = "";
+            newLightbox = (e.currentTarget.getAttribute("href"));
+        })
+    };
+    
+}*/
 
 
 function displayLightbox() { 
  //MISE EN PLACE DES FONCTIONS LIGHTBOX
-EventdisplayLightbox();
+//EventdisplayLightbox();
 creatIconeDomLightbox();
 }
 

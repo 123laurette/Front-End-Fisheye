@@ -59,6 +59,8 @@ function mediaFactory(data){
         spanCoeur.appendChild(coeur);
         infoPhoto.appendChild(spanCoeur);
 
+
+        
         // CREATION IMAGE ET TITRE LIGHTBOX
         const lightbox = document.querySelector(".lightbox");
         const mediaLightbox = document.createElement('div');
