@@ -25,7 +25,8 @@ function displayData(photographers) {
         if (photographer.id == photographerId){  //si l'id du photographe est égal à l'id de photographerId dans json
         const photographerModel = photographerFactoryInfo(photographer); //creation de la const qui met en place la f. de create pour un photographe
         const userCardDOM = photographerModel.getUserMediaCardDOM();  //creation de la const qui regroupe la 1ère et la 2ème fonction de create pour un photographe
-        photographerHeader.appendChild(userCardDOM); //MET LA FACTORIE PHOTOGRAPHER EN TANT QU'ENFANT.
+        photographerHeader.appendChild(userCardDOM);
+
         bandeauPrix = photographer.price;// textcontent = prix du photographe
         console.log(bandeauPrix)
     }});
@@ -33,7 +34,7 @@ function displayData(photographers) {
         bandeau_prix.innerHTML = bandeauPrix + "€ / jour";//insere le prix plus le texte
 }
 
-// APPARITION DES MEDIAS DE LA PAGE DU PHOTOGRAPHE
+// APPARITION DES MEDIAS DE LA PAGE DU PHOTOGRAPHE ET LIGHTBOX
 function displayDataMedia(medias) { 
 
     switch(menuSelect.value){       // MISE EN PLACE DU TRIE
@@ -56,22 +57,44 @@ function displayDataMedia(medias) {
             })
             break;
     }   
-    
+    //AFFICHAGE DU TRI SUR PAGE DU PHOTOGRAPHE
     const cartesMedias = document.querySelector(".cartes_medias");
+    console.log(cartesMedias);
     cartesMedias.innerHTML = "";
+
+    //AFFICHAGE DU TRI SUR LIGHTBOX
+    const lightbox = document.querySelector(".lightbox");
+    console.log(lightbox);
+    lightbox.innerHTML = "";
+
     let totalLikes = 0;
+    let i = 0;
     medias.forEach(media=> {
         if (media.photographerId == photographerId){
             const mediaModel = mediaFactory (media);
             const userMediaDOM = mediaModel.getUserMediaDOM();
             cartesMedias.appendChild(userMediaDOM);
+            createMediaLightboxDom(media);
+
             totalLikes += media.likes;
         }
     })
     let total_likes = document.getElementById("total_likes");
     total_likes.innerHTML= totalLikes;// textcontent = addition des likes de base du photographe
 
+    // EVENEMENT AU CLICK SUR LA PHOTO
+    let mediaArticle = document.querySelector(".cartes_medias");
+    for(let i = 0; i < mediaArticle.childNodes.length; i++){
+        mediaArticle.childNodes[i].childNodes[0].addEventListener("click", function (){
+            mediaLocal(i+1);
+            open();
+            createIconeLightboxDom ()
+        })
+    }
 }
+
+
+
 //  MISE EN PLACE DE LA GESTION DES LIKES
 
 function ajoutLikes(){
@@ -96,6 +119,8 @@ async function display(){
     const {photographers, media} = await getPhotographers();  //créat de la const qui doit récupérer les données json  via la f. fetch
     displayData(photographers); 
     displayDataMedia(media);
+    createIconeLightboxDom ()
+
     menuSelect.onchange = function (){displayDataMedia(media)};
     ajoutLikes();
 }

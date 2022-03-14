@@ -101,5 +101,15 @@ function validFormulaire(e) {
     }
 
 }
+// Fermeture de la Modal avec Escape
+window.addEventListener('keyup', (e) => {
+    onKeyUp(e)
+})
+function onKeyUp(e) {
+    console.log(modal.style.display)
+    if (modal.style.display = "block" && e.key === 'Escape') {
+        closeModal()
+    }
+}
 
 

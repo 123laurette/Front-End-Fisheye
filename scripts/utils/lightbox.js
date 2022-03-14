@@ -1,81 +1,51 @@
-const liensPhoto = document.getElementsByClassName("lienPhoto");
-    console.log(liensPhoto);
+const lightboxMedia = document.getElementsByClassName("lightbox_media");
 
-//FONCTION POUR LES ICONES
 
-function precedent(){
-    let i = this.liensPhoto;
-    i = liensPhoto.length - 1;
-}
-
-function suivant(){
-    let i = this.liensPhoto;
-    i = liensPhoto.length + 1;
-}
-
-function close(){
-    const fermeLightbox = document.querySelector(".lightbox");
-    fermeLightbox.style.display = "none";
+function open (){//appelée dans photographer.js/displayDataMedia()
+    lightbox.style.display = "block";
 }
 
 
-//CREATION ET ACTION DES BOUTONS LIGHTBOX
-function creatIconeDomLightbox () {  
+function close(){//appelée dans fact_lightbox.js
+    lightbox.style.display = "none";
 
-    const lightbox = document.createElement("div");
-    lightbox.className = "lightbox";
+}
+const lienMedia = document.querySelectorAll(".lightbox_media > a");
+console.log(lienMedia);
+function closeLien(){
+    lienMedia.style.display = "none";
+}
 
-    const btnPrecedent = document.createElement("button");
-    btnPrecedent.className = "precedent";
-    btnPrecedent.setAttribute("aria-label", "image précédente");
-    btnPrecedent.addEventListener("click", () => {
-        precedent();
-    });
-    
-    const btnSuivant = document.createElement("button");
-    btnSuivant.className = "suivant";
-    btnSuivant.setAttribute("aria-label", "image suivante");
-    btnSuivant.addEventListener("click", () => {
-        suivant();
-    });
+let mediaIndex = 1;
 
-    const btnClose = document.createElement("button");
-    btnClose.className = "close";
-    btnClose.setAttribute("aria-label", "fermer la lightbox");
-    btnClose.addEventListener("click", () => {
-        close();
-    });
+//Navigue entre les images, en liaison avec les chevrons (suivant/precedent)
+//appelée dans fact_lightbox.js/ onclick
+function mediaNav(n){   
+    mediaVue(mediaIndex += n);
+}
 
-    lightbox.appendChild(btnPrecedent);
-    lightbox.appendChild(btnSuivant);
-    lightbox.appendChild(btnClose);
+//se situe au moment de la navigation entre images
+function mediaLocal(n){ //appelée dans photographer.js/displayDataMedia()
+    mediaVue(mediaIndex = n);
+}
 
-    document.body.appendChild(lightbox);
+//apparaitre et disparaitre l'image
+function mediaVue(n) {
+    let i;
+
+    if (n > lightboxMedia.length) {
+        mediaIndex = 1;
+    }
+    if (n < 1) {
+        mediaIndex = lightboxMedia.length;
+    }
+    for (i = 0; i < lightboxMedia.length; i++) {
+        lightboxMedia[i].style.display = "none";
+    }
+    lightboxMedia[mediaIndex-1].style.display = "block";
 
 }
 
-// EVENEMENT AU CLICK SUR LA PHOTO
-
-/*function EventdisplayLightbox() { 
-    
-    for(let i = 0; i < liensPhoto.length; i++) {
-
-        liensPhoto.addEventListener("click", e => {
-            e.preventDefault();
-            
-            const newLightbox = "";
-            newLightbox = (e.currentTarget.getAttribute("href"));
-        })
-    };
-    
-}*/
 
 
-function displayLightbox() { 
- //MISE EN PLACE DES FONCTIONS LIGHTBOX
-//EventdisplayLightbox();
-creatIconeDomLightbox();
-}
-
-displayLightbox();
 
