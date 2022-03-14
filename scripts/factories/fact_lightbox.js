@@ -12,18 +12,21 @@ document.body.appendChild(lightbox);
     const btnPrecedent = document.createElement("button");
     btnPrecedent.setAttribute("onclick", "mediaNav(-1)");
     btnPrecedent.className = "precedent";
+    btnPrecedent.textContent ="image precedente";
     btnPrecedent.setAttribute("aria-label", "image précédente");
     lightbox.appendChild(btnPrecedent);
 
     const btnSuivant = document.createElement("button");
     btnSuivant.setAttribute("onclick", "mediaNav(1)");
     btnSuivant.className = "suivant";
+    btnSuivant.textContent = "image suivante";
     btnSuivant.setAttribute("aria-label", "image suivante");
     lightbox.appendChild(btnSuivant);
 
     const btnClose = document.createElement("button");
     btnClose.className = "close";
     btnClose.setAttribute("aria-label", "fermer la lightbox");
+    btnClose.textContent = "fermer la lightbox";
     lightbox.appendChild(btnClose);
     btnClose.addEventListener("click", close);
 

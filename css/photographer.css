@@ -268,24 +268,21 @@
     width: 99%; 
     height: 100%;
     background-color: #ffffff;
-    opacity: 0.9;
+    opacity: 1;
     z-index: 10;
     transition: opacity .3s;
-    border: red solid;
 }
-.lightbox.fadeOut {
-    opacity: 0;
-}
+
 
 .precedent,
 .suivant {
     background: url(/assets/icons/chevron.svg) center center / 100% 100% no-repeat;
     border: none;
-    width: 50px;
+    width: 40px;
     height: 90%;
     position: fixed;
     top: 0;
-    margin-top: -14px;
+    margin-top: 30px;
     z-index: 11;
 }
 
@@ -301,8 +298,8 @@
 .close{
     background: url(/assets/icons/close_lightbox.svg)  center center / 100% 100% no-repeat transparent;
     border: none;
-    width: 50px;
-    height: 50px;
+    width: 40px;
+    height: 40px;
     position: fixed;
     top: 50px;
     right: 120px;
@@ -314,7 +311,6 @@
     cursor: pointer;
     transition: opacity .3s;
     text-indent: -10000px;
-    border: violet solid;
 
 }
 .lightbox button:hover {
@@ -324,21 +320,22 @@
 .lightbox_media{
     display: flex;
     flex-direction: column;
-    align-items: center;
-    justify-content: center;
-    margin-left: 50px;
-    margin-right: 50px;
+    width: 70%;
+    margin-left: 250px;
     min-height: 100%;
-    border: blue solid;
 }
 .lightbox_media img,
-.lightbox_media a {
-    width: 70%;
+.lightbox_media video {
+    width: 100%;
     height: 800px;
     object-fit: cover;
-    display: flex;
-    justify-content: center;
-    align-items: center;
+    margin-top: 35px;
     
+}
+.titreLightbox {
+    color : #901C1C;
+    font-size: 24px;
+    font-weight: 400;
+    margin-top: -2px;
 }
 

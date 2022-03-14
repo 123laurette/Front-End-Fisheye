@@ -8,27 +8,10 @@ function open (){//appelée dans photographer.js/displayDataMedia()
 
 function close(){//appelée dans fact_lightbox.js
     lightbox.style.display = "none";
+}
 
-}
-const lienMedia = document.querySelectorAll(".lightbox_media > a");
-console.log(lienMedia);
-function closeLien(){
-    lienMedia.style.display = "none";
-}
 
 let mediaIndex = 1;
-
-//Navigue entre les images, en liaison avec les chevrons (suivant/precedent)
-//appelée dans fact_lightbox.js/ onclick
-function mediaNav(n){   
-    mediaVue(mediaIndex += n);
-}
-
-//se situe au moment de la navigation entre images
-function mediaLocal(n){ //appelée dans photographer.js/displayDataMedia()
-    mediaVue(mediaIndex = n);
-}
-
 //apparaitre et disparaitre l'image
 function mediaVue(n) {
     let i;
@@ -45,6 +28,19 @@ function mediaVue(n) {
     lightboxMedia[mediaIndex-1].style.display = "block";
 
 }
+
+//Navigue entre les images, en liaison avec les chevrons (suivant/precedent)
+//appelée dans fact_lightbox.js/ onclick
+function mediaNav(n){   
+    mediaVue(mediaIndex += n);
+}
+
+//se situe au moment de la navigation entre images
+function mediaLocal(n){ //appelée dans photographer.js/displayDataMedia()
+    mediaVue(mediaIndex = n);
+}
+
+
 
 
 
