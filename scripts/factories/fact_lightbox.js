@@ -48,6 +48,8 @@ function createMediaLightboxDom (data){ //appelée dans photographer.js/displayD
         const photoVideo = document.createElement("video");
         const mp4 = `assets/photographers/${video}`;
         const source = document.createElement("source");
+
+        photoVideo.setAttribute("controls", " ");
         lien.setAttribute("href",mp4);
         source.setAttribute("src",mp4);
         source.setAttribute("alt", title);

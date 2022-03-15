@@ -35,7 +35,7 @@ function mediaNav(n){
     mediaVue(mediaIndex += n);
 }
 
-//se situe au moment de la navigation entre images
+//se situer au moment de la navigation entre images
 function mediaLocal(n){ //appelée dans photographer.js/displayDataMedia()
     mediaVue(mediaIndex = n);
 }

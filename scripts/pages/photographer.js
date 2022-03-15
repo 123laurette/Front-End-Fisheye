@@ -79,6 +79,8 @@ function displayDataMedia(medias) {
             totalLikes += media.likes;
         }
     })
+    ajoutLikes();   //appel de la fonction de gestion des likes, pour agir aussi si les medias sont triés
+
     let total_likes = document.getElementById("total_likes");
     total_likes.innerHTML= totalLikes;// textcontent = addition des likes de base du photographe
 
@@ -122,7 +124,6 @@ async function display(){
     createIconeLightboxDom ()
 
     menuSelect.onchange = function (){displayDataMedia(media)};
-    ajoutLikes();
 }
 display (); 
 

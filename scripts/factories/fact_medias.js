@@ -16,7 +16,7 @@ function mediaFactory(data){
             const mp4 = `assets/photographers/${video}`;
             const source = document.createElement("source");
             source.className = "mediaImg";
-            
+            photoVideo.setAttribute("controls", " ");
             source.setAttribute("src",mp4);
             source.setAttribute("alt", title);
             source.setAttribute("type", "video/mp4");
