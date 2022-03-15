@@ -127,7 +127,8 @@
             font-weight: 500;
         }
         .info_photo h2{
-            width: 80%;   
+            width: 80%; 
+            line-height: 17px;
         }
         .info_photo span{
             margin-right: 0px;

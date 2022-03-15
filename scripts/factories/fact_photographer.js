@@ -18,7 +18,6 @@ function photographerFactory(data){                                 //1ère fonc
     window.location.href=`photographer.html?id=${id}`;         
             //A REVOIR CAR LE LIEN DOIT ETRE SUR LA PHOTO ET LE NOM UNIQUEMENT 
     })  
-
     img.setAttribute("src",picture);
     img.setAttribute("alt", "photo" +" " + name);
     h2.textContent = name;

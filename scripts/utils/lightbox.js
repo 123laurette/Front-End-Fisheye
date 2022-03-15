@@ -13,7 +13,7 @@ function close(){//appelée dans fact_lightbox.js
 
 let mediaIndex = 1;
 //apparaitre et disparaitre l'image
-function mediaVue(n) {
+function mediaVue(n) { //appelée dans function mediaNav et mediaVue
     let i;
 
     if (n > lightboxMedia.length) {
@@ -38,6 +38,22 @@ function mediaNav(n){
 //se situer au moment de la navigation entre images
 function mediaLocal(n){ //appelée dans photographer.js/displayDataMedia()
     mediaVue(mediaIndex = n);
+}
+
+lightbox.onkeydown = lightboxNavClavier();
+
+function lightboxNavClavier(e) {
+
+    if (e.keyCode == '37') {
+        mediaNav(-1);
+    }
+    else if (e.keyCode == '39') {
+        mediaNav(1);
+    }
+
+    if(e.code == "Escape"){
+        document.getElementsByClassName("lightbox").style.display = "none";
+    }
 }
 
 

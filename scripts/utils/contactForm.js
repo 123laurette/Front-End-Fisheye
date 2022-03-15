@@ -24,6 +24,7 @@ function validPrenom(inputFirst) {
 
 let nom = document.getElementById("last");
 nom.addEventListener("change", validNom);
+nom.focus();
 
 function validNom(inputLast) {
     let nomV = new RegExp('^[a-zA-Z-\s]+$');
@@ -39,6 +40,7 @@ function validNom(inputLast) {
     return true;
     }
 }
+
 // VERIFICATION EMAIL
 
 let email = document.getElementById("email");
@@ -106,7 +108,6 @@ window.addEventListener('keyup', (e) => {
     onKeyUp(e)
 })
 function onKeyUp(e) {
-    console.log(modal.style.display)
     if (modal.style.display = "block" && e.key === 'Escape') {
         closeModal()
     }

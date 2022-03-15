@@ -22,3 +22,8 @@ async function display(){                                              //Fonctio
 }
 display () 
 
+
+
+window.onload = function() {
+  document.querySelector("img").focus;
+}
