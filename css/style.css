@@ -41,6 +41,13 @@ h1 {
     flex-direction: column;
 }
 
+.photographer_section article:focus {
+    outline: 0;
+    border: #901C1C solid 2px;
+    border-radius: 20px;
+    padding: 10px;
+}
+
 .photographer_section article h2 {
     color: #D3573C;
     font-size: 36px;
@@ -53,6 +60,7 @@ h1 {
     border-radius: 50%;
     object-fit: cover;
 }
+
 .photographer_section article h3 {
     color: #901C1c;
     font-size: 13px;

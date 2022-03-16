@@ -40,22 +40,25 @@ function mediaLocal(n){ //appelée dans photographer.js/displayDataMedia()
     mediaVue(mediaIndex = n);
 }
 
-/*lightbox.onkeydown = lightboxNavClavier();
+
+//EVENEMENTS AU CLAVIER POUR LIGHTBOX
+
+document.onkeydown = lightboxNavClavier;
 
 function lightboxNavClavier(e) {
 
-    if (e.keyCode == '37') {
+    if (e.keyCode == '37') {    //CHEVRON PRECEDENT
         mediaNav(-1);
     }
-    else if (e.keyCode == '39') {
+    else if (e.keyCode == '39') {   //CHEVRON SUIVANT
         mediaNav(1);
     }
 
-    if(e.code == "Escape"){
-        document.getElementsByClassName("lightbox").style.display = "none";
+    if(lightbox.style.display = "block" && e.code == "Escape"){ //CROIX DE FERMETURE
+        close();
     }
 }
-*/
+
 
 
 

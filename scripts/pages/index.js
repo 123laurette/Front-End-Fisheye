@@ -24,6 +24,3 @@ display ()
 
 
 
-window.onload = function() {
-  document.querySelector("img").focus;
-}

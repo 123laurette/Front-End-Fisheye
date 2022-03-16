@@ -83,6 +83,7 @@ let modal = document.getElementById("contact_modal");
 
 function displayModal() {
 	modal.style.display = "block";
+    prenom.focus();
 }
 function closeModal() {
     modal.style.display = "none";
@@ -105,9 +106,9 @@ function validFormulaire(e) {
 }
 // Fermeture de la Modal avec Escape
 window.addEventListener('keyup', (e) => {
-    onKeyUp(e)
+    closeModalClavier(e)
 })
-function onKeyUp(e) {
+function closeModalClavier(e) {
     if (modal.style.display = "block" && e.key === 'Escape') {
         closeModal()
     }

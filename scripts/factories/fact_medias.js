@@ -9,12 +9,15 @@ function mediaFactory(data){
         
         const carteMedia = document.createElement("article");
         carteMedia.classList.add ("carte_media");
+        carteMedia.setAttribute("title", "Permet d'ouvrir une lightbox");
 
         
         if("video" in data){
             const photoVideo = document.createElement("video");
             const mp4 = `assets/photographers/${video}`;
             const source = document.createElement("source");
+            photoVideo.setAttribute("tabindex", "4");
+
             source.className = "mediaImg";
             photoVideo.setAttribute("controls", " ");
             source.setAttribute("src",mp4);
@@ -28,6 +31,7 @@ function mediaFactory(data){
             const img = document.createElement( "img" );
             const photo = `assets/photographers/${image}`;
 
+            img.setAttribute("tabindex", "4");
             img.setAttribute("src",photo);
             img.setAttribute("alt", "photo" + " " +title);
             img.className = "mediaImg";
@@ -42,10 +46,14 @@ function mediaFactory(data){
         const h2 = document.createElement( "h2" );
         const nbreLike = document.createElement("span");
         const spanCoeur = document.createElement("span");
-        spanCoeur.className = "coeur";
         const coeur = document.createElement("i");
+
+        nbreLike.setAttribute("title", "nombre de like de la photo");
+        spanCoeur.className = "coeur";
         coeur.className = "fas fa-heart";
-        coeur.setAttribute("aria-label", "likes");
+        coeur.setAttribute("aria-label", "icone coeur cliquable");
+        coeur.setAttribute("tabindex", "4");
+
 
         h2.textContent = title;
         nbreLike.textContent = likes;

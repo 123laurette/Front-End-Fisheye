@@ -7,17 +7,26 @@ function photographerFactory(data){                                 //1ère fonc
 
   
     const article = document.createElement( "article" );
+    article.setAttribute("title", "Détail du photographe");
+    article.setAttribute("tabindex", "2");
+
     const img = document.createElement( "img" );
     const h2 = document.createElement( "h2" );
     const h3 = document.createElement("h3");
     const h4 = document.createElement("h4");
     const p = document.createElement("p");
 
-            // CREATION DU LIEN ENTRE INDEX.HTML ET PHOTOGRAPHER.HTML
+      // CREATION DU LIEN ENTRE INDEX.HTML ET PHOTOGRAPHER.HTML
+            //AU CLICK
     article.addEventListener("click", ()=>{
-    window.location.href=`photographer.html?id=${id}`;         
-            //A REVOIR CAR LE LIEN DOIT ETRE SUR LA PHOTO ET LE NOM UNIQUEMENT 
+      window.location.href=`photographer.html?id=${id}`;  
     })  
+            //AU CLAVIER AVEC LA TOUCHE ENTREE
+    article.addEventListener("keypress", ()=>{
+      window.location.href=`photographer.html?id=${id}`;  
+    })  
+
+
     img.setAttribute("src",picture);
     img.setAttribute("alt", "photo" +" " + name);
     h2.textContent = name;
@@ -52,6 +61,7 @@ function photographerFactoryInfo(data){
       const h4 = document.createElement("h4");
 
       h2.textContent = name;
+      h2.setAttribute("tabindex","1");
       h2.setAttribute("aria-label", name);
       h3.textContent = city +", "+ country;
       h4.textContent = tagline;
@@ -61,7 +71,7 @@ function photographerFactoryInfo(data){
       div.appendChild(h4);
 
       const button = document.createElement ("div");
-      button.innerHTML = `<button class="contact_button" aria-label = contactez-moi onclick="displayModal()">Contactez-moi</button>`;
+      button.innerHTML = `<button class="contact_button" tabindex="2" aria-label = "contacter le photographe" onclick="displayModal()">Contactez-moi</button>`;
 
       const photoPhotographe = document.createElement ("div")
       photoPhotographe.classList = ("photo");

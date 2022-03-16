@@ -90,9 +90,18 @@ function displayDataMedia(medias) {
         mediaArticle.childNodes[i].childNodes[0].addEventListener("click", function (){
             mediaLocal(i+1);
             open();
-            createIconeLightboxDom ()
+            createIconeLightboxDom ();
         })
+    //EVENEMENT AU CLAVIER SUR LA PHOTO
+        mediaArticle.childNodes[i].childNodes[0].addEventListener("keypress", function (e){
+            if(e.key == "Enter"){
+            mediaLocal(i+1);
+            open();
+            createIconeLightboxDom ();
+            }
+        });
     }
+    
 }
 
 
@@ -103,7 +112,7 @@ function ajoutLikes(){
     const coeurs = document.querySelectorAll(".coeur");// je cible le span des coeurs
     console.log (coeurs);
     coeurs.forEach(e => {
-
+        //EVENEMENT AU CLICK
         e.addEventListener("click", function(){// au click sur l'element
 
             const nbreLike = e.parentElement.children[1];//creation constante qui cible le nbre de like
@@ -111,6 +120,16 @@ function ajoutLikes(){
             nbreLike.textContent++;// j'aoute 1 au nbre de like
             let totalLikes = document.getElementById("total_likes");// je cible le total des likes dans le bandeau
             totalLikes.innerHTML++; // j'ajoute 1 a ce total
+        });
+
+        //EVENEMENT AU CLAVIER AVEC TOUCHE ENTREE
+        e.addEventListener("keypress", function(){
+
+            const nbreLike = e.parentElement.children[1];
+    
+            nbreLike.textContent++;
+            let totalLikes = document.getElementById("total_likes");
+            totalLikes.innerHTML++;                         
         });
     });
 }

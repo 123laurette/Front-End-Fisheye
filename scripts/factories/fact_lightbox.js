@@ -42,13 +42,14 @@ function createMediaLightboxDom (data){ //appelée dans photographer.js/displayD
     mediaLightbox.className = "lightbox_media";
     const lien = document.createElement("a");
 
+
     const {title, image, video } = data
 
     if("video" in data){
         const photoVideo = document.createElement("video");
         const mp4 = `assets/photographers/${video}`;
         const source = document.createElement("source");
-
+        
         photoVideo.setAttribute("controls", " ");
         lien.setAttribute("href",mp4);
         source.setAttribute("src",mp4);
