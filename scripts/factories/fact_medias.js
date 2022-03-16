@@ -16,10 +16,10 @@ function mediaFactory(data){
             const photoVideo = document.createElement("video");
             const mp4 = `assets/photographers/${video}`;
             const source = document.createElement("source");
-            photoVideo.setAttribute("tabindex", "4");
 
-            source.className = "mediaImg";
+            photoVideo.setAttribute("tabindex", "4");
             photoVideo.setAttribute("controls", " ");
+            source.className = "mediaImg";
             source.setAttribute("src",mp4);
             source.setAttribute("alt", title);
             source.setAttribute("type", "video/mp4");
@@ -40,28 +40,25 @@ function mediaFactory(data){
         }
 
         const infoPhoto = document.createElement("div");
-        infoPhoto.classList.add("info_photo");
-        carteMedia.appendChild(infoPhoto);
-
         const h2 = document.createElement( "h2" );
         const nbreLike = document.createElement("span");
         const spanCoeur = document.createElement("span");
         const coeur = document.createElement("i");
 
+        infoPhoto.classList.add("info_photo");
+        h2.textContent = title;
+        nbreLike.textContent = likes;
         nbreLike.setAttribute("title", "nombre de like de la photo");
         spanCoeur.className = "coeur";
         coeur.className = "fas fa-heart";
         coeur.setAttribute("aria-label", "icone coeur cliquable");
         coeur.setAttribute("tabindex", "4");
 
-
-        h2.textContent = title;
-        nbreLike.textContent = likes;
-
+        spanCoeur.appendChild(coeur);
         infoPhoto.appendChild(h2);
         infoPhoto.appendChild(nbreLike);
-        spanCoeur.appendChild(coeur);
         infoPhoto.appendChild(spanCoeur);
+        carteMedia.appendChild(infoPhoto);
 
         return carteMedia;
     }
@@ -73,7 +70,6 @@ function mediaFactory(data){
 function bandeau(){
     
     const bandeauHtml = document.querySelector(".bandeau");
-        
     const like = document.createElement("h4")
     const coeurb = document.createElement("i");
     const prix = document.createElement("h4");

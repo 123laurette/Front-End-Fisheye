@@ -16,6 +16,8 @@ function photographerFactory(data){                                 //1ère fonc
     const h4 = document.createElement("h4");
     const p = document.createElement("p");
 
+
+
       // CREATION DU LIEN ENTRE INDEX.HTML ET PHOTOGRAPHER.HTML
             //AU CLICK
     article.addEventListener("click", ()=>{
@@ -51,15 +53,15 @@ function photographerFactoryInfo(data){
         
     function getUserMediaCardDOM() {                                     
       const {portrait, name, city, country, tagline} = data;
+
       const section = document.createElement("section");
-      section.classList = "photographerHeader";
-      
-      const div = document.createElement("div")
-      div.classList = "infosPhotographe";
+      const div = document.createElement("div");
       const h2 = document.createElement( "h2" );
       const h3 = document.createElement("h3");
       const h4 = document.createElement("h4");
 
+      section.classList = "photographerHeader";
+      div.classList = "infosPhotographe";
       h2.textContent = name;
       h2.setAttribute("tabindex","1");
       h2.setAttribute("aria-label", name);
@@ -73,10 +75,11 @@ function photographerFactoryInfo(data){
       const button = document.createElement ("div");
       button.innerHTML = `<button class="contact_button" tabindex="2" aria-label = "contacter le photographe" onclick="displayModal()">Contactez-moi</button>`;
 
-      const photoPhotographe = document.createElement ("div")
-      photoPhotographe.classList = ("photo");
+      const photoPhotographe = document.createElement ("div");
       const picture = `assets/photographers/${portrait}`;
       const img = document.createElement( "img" );
+
+      photoPhotographe.classList = ("photo");
       img.setAttribute("alt", "photo" +" " + name);
       img.setAttribute("src",picture);
 

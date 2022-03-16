@@ -28,7 +28,7 @@ function displayData(photographers) {
         photographerHeader.appendChild(userCardDOM);
 
         bandeauPrix = photographer.price;// textcontent = prix du photographe
-        console.log(bandeauPrix)
+        console.log(bandeauPrix);
     }});
         const bandeau_prix = document.getElementById("prix");//cible le bandeau au niveau du prix
         bandeau_prix.innerHTML = bandeauPrix + "€ / jour";//insere le prix plus le texte
@@ -112,6 +112,7 @@ function ajoutLikes(){
     const coeurs = document.querySelectorAll(".coeur");// je cible le span des coeurs
     console.log (coeurs);
     coeurs.forEach(e => {
+
         //EVENEMENT AU CLICK
         e.addEventListener("click", function(){// au click sur l'element
 
@@ -140,7 +141,7 @@ async function display(){
     const {photographers, media} = await getPhotographers();  //créat de la const qui doit récupérer les données json  via la f. fetch
     displayData(photographers); 
     displayDataMedia(media);
-    createIconeLightboxDom ()
+    createIconeLightboxDom ();
 
     menuSelect.onchange = function (){displayDataMedia(media)};
 }

@@ -13,7 +13,7 @@ function close(){//appelée dans fact_lightbox.js
 
 let mediaIndex = 1;
 //apparaitre et disparaitre l'image
-function mediaVue(n) { //appelée dans function mediaNav et mediaVue
+function mediaVue(n) { //appelée dans function mediaNav et mediaLocal
     let i;
 
     if (n > lightboxMedia.length) {

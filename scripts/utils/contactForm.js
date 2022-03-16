@@ -8,7 +8,7 @@ prenom.addEventListener("change", validPrenom);
 
 function validPrenom(inputFirst) {                           
     let prenomV = new RegExp('^[a-zA-Z-\s]+$');                
-    let testPrenom = prenomV.test(first.value)
+    let testPrenom = prenomV.test(first.value);
 
     if (!testPrenom) { 
         prenom.parentElement.setAttribute("data-error-visible", "true");
@@ -48,7 +48,7 @@ email.addEventListener("change", validEmail);
 
 function validEmail(inputEmail) {
     let emailV = new RegExp('^[a-zA-Z0-9.-_]+[@]{1}[a-zA-Z0-9.-_]+[.]{1}[a-z]{2,10}$');
-    let testEmail = emailV.test(email.value)
+    let testEmail = emailV.test(email.value);
 
     if (!testEmail) {
         email.parentElement.setAttribute("data-error-visible", "true");
@@ -66,7 +66,6 @@ let message = document.getElementById("message");
 message.addEventListener("change", validMessage);
 
 function validMessage (){
-
     if (!message.value){
         message.parentElement.setAttribute("data-error-visible", "true");
         message.parentElement.setAttribute("data-error", "Veuillez nous laisser un message svp.");
@@ -102,15 +101,15 @@ function validFormulaire(e) {
     }else{
         e.preventDefault();
     }
-
 }
 // Fermeture de la Modal avec Escape
 window.addEventListener('keyup', (e) => {
-    closeModalClavier(e)
+    closeModalClavier(e);
 })
+
 function closeModalClavier(e) {
     if (modal.style.display = "block" && e.key === 'Escape') {
-        closeModal()
+        closeModal();
     }
 }
 
