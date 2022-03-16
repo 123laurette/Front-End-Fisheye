@@ -40,7 +40,7 @@ function mediaLocal(n){ //appelée dans photographer.js/displayDataMedia()
     mediaVue(mediaIndex = n);
 }
 
-lightbox.onkeydown = lightboxNavClavier();
+/*lightbox.onkeydown = lightboxNavClavier();
 
 function lightboxNavClavier(e) {
 
@@ -55,7 +55,7 @@ function lightboxNavClavier(e) {
         document.getElementsByClassName("lightbox").style.display = "none";
     }
 }
-
+*/
 
 
 
