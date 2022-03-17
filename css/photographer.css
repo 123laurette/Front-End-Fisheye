@@ -301,29 +301,12 @@
 }
 
 
-.precedent,
-.suivant {
-    background: url(/assets/icons/chevron.svg) center center / 100% 100% no-repeat;
-    border: none;
-    width: 40px;
-    height: 90%;
-    position: fixed;
-    top: 0;
-    margin-top: 30px;
-    z-index: 11;
-}
 
-.suivant{
-    right: 8%;
-    transform: rotate(180deg);
-}
-.precedent {
-    right: 91%;
-}
+
+
 
 
 .close{
-    background: url(/assets/icons/close_lightbox.svg)  center center / 100% 100% no-repeat transparent;
     border: none;
     width: 40px;
     height: 40px;

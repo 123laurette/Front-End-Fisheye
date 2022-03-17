@@ -9,27 +9,28 @@ document.body.appendChild(lightbox);
 
  function createIconeLightboxDom (){ //appelée dans photographer.js/ display()
 
-    const btnPrecedent = document.createElement("button");
-    btnPrecedent.setAttribute("onclick", "mediaNav(-1)");
-    btnPrecedent.className = "precedent";
-    btnPrecedent.textContent ="image precedente";
-    btnPrecedent.setAttribute("aria-label", "image précédente");
-    lightbox.appendChild(btnPrecedent);
+    const iconePrecedent = document.createElement("i");
+    iconePrecedent.className = "fas fa-chevron-left";
+    iconePrecedent.id = "precedent";
+    iconePrecedent.setAttribute("onclick", "mediaNav(-1)");
+    iconePrecedent.setAttribute("aria-label", "image précédente");
+    lightbox.appendChild(iconePrecedent);
 
-    const btnSuivant = document.createElement("button");
-    btnSuivant.setAttribute("onclick", "mediaNav(1)");
-    btnSuivant.className = "suivant";
-    btnSuivant.textContent = "image suivante";
-    btnSuivant.setAttribute("aria-label", "image suivante");
-    lightbox.appendChild(btnSuivant);
+    const iconeSuivant = document.createElement("i");
+    iconeSuivant.className = "fas fa-chevron-right";
+    iconeSuivant.setAttribute("onclick", "mediaNav(1)");
+    iconeSuivant.id = "suivant";
+    iconeSuivant.setAttribute("aria-label", "image suivante");
+    lightbox.appendChild(iconeSuivant);
 
-    const btnClose = document.createElement("button");
-    btnClose.className = "close";
-    btnClose.setAttribute("aria-label", "fermer la lightbox");
-    btnClose.textContent = "fermer la lightbox";
-    lightbox.appendChild(btnClose);
-    btnClose.addEventListener("click", close);
+    const iconeClose = document.createElement("i");
+    iconeClose.className = "fas fa-times";
+    iconeClose.id = "close";
+    iconeClose.setAttribute("aria-label", "fermer la lightbox");
+    lightbox.appendChild(iconeClose);
+    iconeClose.addEventListener("click", close);
 
+    
 }
 
 
@@ -41,7 +42,6 @@ function createMediaLightboxDom (data){ //appelée dans photographer.js/displayD
     const mediaLightbox = document.createElement('div');
     mediaLightbox.className = "lightbox_media";
     const lien = document.createElement("a");
-
 
     const {title, image, video } = data
 

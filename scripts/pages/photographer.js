@@ -141,7 +141,6 @@ async function display(){
     const {photographers, media} = await getPhotographers();  //créat de la const qui doit récupérer les données json  via la f. fetch
     displayData(photographers); 
     displayDataMedia(media);
-    createIconeLightboxDom ();
 
     menuSelect.onchange = function (){displayDataMedia(media)};
 }
