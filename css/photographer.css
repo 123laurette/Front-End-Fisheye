@@ -81,6 +81,7 @@
     display: flex;
     margin-left: 100px;
     margin-top: 10px;
+    margin-bottom: 10px;
     font-size: 18px;
     position: relative;
 }
@@ -108,18 +109,16 @@
 /*..............MEDIAS...........*/
 .cartes_medias{
     display: flex;
-    width: 95%;
-    height: 1250px;
+    width: 99%;
+    height: 1450px;
     flex-wrap: wrap;
-    justify-content:space-around;
-    margin: auto;
-    margin-top: 30px;
 }
 .carte_media{
     height: 360px;
     width: 26%;
     display: flex;
     flex-direction: column;
+    margin-left: 95px;
 }
     .carte_media img, video{
         height: 310px;

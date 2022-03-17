@@ -7,7 +7,7 @@ document.body.appendChild(lightbox);
 
  //CREATION DES BOUTONS LIGHTBOX
 
- function createIconeLightboxDom (){ //appelée dans photographer.js/ display()
+ function createIconeLightboxDom (){ //appelée dans photographer.js/ displayDataMedia()
 
     const iconePrecedent = document.createElement("i");
     iconePrecedent.className = "fas fa-chevron-left";
@@ -29,7 +29,6 @@ document.body.appendChild(lightbox);
     iconeClose.setAttribute("aria-label", "fermer la lightbox");
     lightbox.appendChild(iconeClose);
     iconeClose.addEventListener("click", close);
-
     
 }
 
