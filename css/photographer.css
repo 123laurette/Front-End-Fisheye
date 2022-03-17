@@ -300,32 +300,33 @@
     transition: opacity .3s;
 }
 
-
-
-
-
-
-
-.close{
-    border: none;
-    width: 40px;
-    height: 40px;
+#close{
+    color: #901C1C;
+    font-size: 50px;
     position: fixed;
-    top: 50px;
+    top: 30px;
     right: 8%;
     z-index: 12;
-}
-
-.lightbox button {
-    opacity: .5;
     cursor: pointer;
-    transition: opacity .3s;
-    text-indent: -10000px;
+}
 
+#precedent, #suivant {
+    color: #901C1C;
+    font-size: 50px;
+    position: fixed;
+    top: 40%;
+    z-index: 12;
+    cursor: pointer;
 }
-.lightbox button:hover {
-    opacity: 1;
+
+#suivant {
+    margin-left: 90%;
 }
+#precedent {
+    margin-left: 7%;
+}
+
+
 
 .lightbox_media{
     display: flex;
