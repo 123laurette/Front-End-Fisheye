@@ -109,7 +109,7 @@
 .cartes_medias{
     display: flex;
     width: 95%;
-    height: 1600px;
+    height: 1550px;
     flex-wrap: wrap;
     justify-content:space-around;
     margin: auto;
@@ -325,8 +325,6 @@
 #precedent {
     margin-left: 7%;
 }
-
-
 
 .lightbox_media{
     display: flex;
