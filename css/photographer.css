@@ -109,7 +109,7 @@
 .cartes_medias{
     display: flex;
     width: 95%;
-    height: 1550px;
+    height: 1250px;
     flex-wrap: wrap;
     justify-content:space-around;
     margin: auto;
